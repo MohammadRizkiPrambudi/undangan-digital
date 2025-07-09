@@ -1,7 +1,7 @@
 ### Instalation
 
 ```
-git clone: https://github.com/M-Hidayatullah/base-admin-laravel-10-skydash.git
+git clone: https://github.com/MohammadRizkiPrambudi/undangan-digital.git
 ```
 
 ### composer install
