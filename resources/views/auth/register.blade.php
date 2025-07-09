@@ -22,35 +22,40 @@
                             <div class="brand-logo">
                                 <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
                             </div>
-                            <h4>New here?</h4>
-                            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                            <h4>Buat Akun</h4>
+                            <h6 class="font-weight-light">Silahkan Lengkapi Form Berikut</h6>
                             <form method="POST" action="{{ route('register') }}" class="pt-3">
-                            @csrf
-                            <div class="form-group">
-                             <input type="text" name="name" class="form-control form-control-lg" placeholder="Username" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
-                            </div>
+                                @csrf
                                 <div class="form-group">
-                                    <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Confirm Password" required>
+                                    <input type="text" name="name" class="form-control form-control-lg"
+                                        placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control form-control-lg"
+                                        placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password_confirmation"
+                                        class="form-control form-control-lg" placeholder="Confirm Password" required>
                                 </div>
                                 <div class="mb-4">
                                     <div class="form-check">
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input" required>
-                                            I agree to all Terms & Conditions
+                                            Saya Setuju Semua Persyaratan
                                         </label>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
+                                    <button type="submit"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Daftar</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Already have an account? <a href="{{ route('login') }}" class="text-primary">Login</a>
+                                    Sudah Punya Akun? <a href="{{ route('login') }}" class="text-primary">Login</a>
                                 </div>
                             </form>
                         </div>
