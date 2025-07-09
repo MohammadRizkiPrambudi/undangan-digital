@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/dashboard/index', function () {
     return view('dashboard.index');
-});
+})->middleware(['auth'])->name('dashboard.index');
 
 Route::get('/forms', function () {
     return view('pages.forms.index');
@@ -49,13 +58,13 @@ Route::get('/icons', function () {
     return view('pages.icons.index');
 });
 
-Route::get('/login', function () {
-    return view('pages.user-pages.login.index');
-});
+// Route::get('/login', function () {
+//     return view('pages.user-pages.login.index');
+// });
 
-Route::get('/register', function () {
-    return view('pages.user-pages.register.index');
-});
+// Route::get('/register', function () {
+//     return view('pages.user-pages.register.index');
+// });
 
 Route::get('/erro404', function () {
     return view('pages.error-pages.404.index');
