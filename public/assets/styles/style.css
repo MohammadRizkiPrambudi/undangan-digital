@@ -1,0 +1,811 @@
+/* Mulish Font From Google */
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap");
+/* Reused Colors Variables */
+:root {
+    --white: #fff;
+    --black: #131318;
+    --primary_black: rgba(19, 19, 24, 0.702);
+    --secondary_black: #5a5a5d;
+    --primary_red: #57e32c;
+    /* --primary_red: #ff5400; */
+}
+/* Universal Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body styles */
+body {
+    font-family: "Mulish", sans-serif;
+}
+footer {
+    min-height: 40vh;
+}
+
+/* Container Class Related Styles And Reused Classes */
+/* ===========> Starts <===========  */
+.container {
+    max-width: 1440px;
+    width: 81%;
+    margin: 0 auto;
+}
+.btn {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    padding: 0.813rem 2.125rem;
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    background: var(--primary_red);
+    cursor: pointer;
+}
+.para {
+    color: #5a5a5d;
+    font-size: 1rem;
+    line-height: 26px; /* 162.5% */
+}
+.hidden {
+    display: none;
+}
+/* >>>>>>>>>>>> Container Class Related Styles And Reused Classes <<<<<<<<<<< */
+/* Nav Related Styles */
+/* ===========> Starts <===========  */
+.container nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.nav_menu_box ul {
+    display: flex;
+    gap: 2.75rem;
+}
+.nav_menu_box ul li {
+    list-style: none;
+}
+.nav_menu_box ul li a {
+    text-decoration: none;
+    color: #424247;
+    text-align: center;
+    font-size: 1.12rem;
+}
+#Home_Menu {
+    color: var(--primary_red);
+}
+.nav_logo_box {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.nav_logo_box h2 {
+    color: var(--black);
+    font-weight: 800;
+    font-size: 2.25rem;
+}
+.nav_logo_box .savior {
+    color: var(--primary_red);
+}
+.nav_menu_box > .bars {
+    display: none;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>>>Banner Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+
+.banner {
+    background: linear-gradient(
+            180deg,
+            rgba(19, 19, 24, 0.8) 0%,
+            rgba(19, 19, 24, 0) 100%
+        ),
+        url("");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 3.125rem;
+    padding: 6.625rem 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+}
+.banner_content_box h1 {
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.banner_content_box p {
+    font-size: 1rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 48px;
+}
+.banner_input_box {
+    display: flex;
+    gap: 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+}
+.banner_input_box div {
+    flex: 1;
+    background-color: var(--white);
+    height: 52px;
+    border-radius: 8px;
+    position: relative;
+    /* border: 1px solid red; */
+}
+.banner_input_box div input {
+    border: none;
+    outline: none;
+    height: 100%;
+    border-radius: 8px;
+}
+.banner_input_box div input::placeholder {
+    /*styles here*/
+    padding-left: 0.8rem;
+    color: var(--primary_black);
+}
+.when,
+.type {
+    display: flex;
+    align-items: center;
+}
+.fa-angle-down {
+    position: absolute;
+    right: 1rem;
+}
+.banner_input_box > .find_now {
+    display: flex;
+    background-color: var(--primary_red);
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+.find_now .fa-magnifying-glass {
+    font-size: 1.4rem;
+    color: var(--white);
+}
+.find_btn {
+    border: none;
+    outline: none;
+    background-color: var(--primary_red);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+}
+/* >>>>>>>>>>>Banner Related Styles<<<<<<<<<< */
+/* =========> Ends <=========== */
+/* >>>>>>>>>>>Popular Tours Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.popular_tours_parent {
+    display: flex;
+    margin: 6rem 0;
+    gap: 3rem;
+}
+.popular_tours_parent div {
+    flex: 1;
+}
+.popular_tours_content_box {
+    overflow: hidden;
+}
+.popular_tours_content_box > h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--black);
+}
+.popular_tours_content_box > p {
+    color: var(--primary_black);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1.78rem 0;
+}
+.popular_tours_content_box ul {
+    padding-left: 2rem;
+}
+.popular_tours_content_box ul li {
+    color: var(--primary_black);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-bottom: 1rem;
+}
+.popular_tours_img_box {
+    object-fit: cover;
+}
+.popular_tours_img_box img {
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 16px;
+    height: 34.5rem;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>>>Choose your destination section Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.destination_content_box h2 {
+    color: var(--black);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+.destination_content_box p {
+    color: var(--primary_black);
+    text-align: center;
+    font-size: 1rem;
+    line-height: 26px;
+    margin-bottom: 3rem;
+    padding: 0 8rem;
+}
+/* img styles */
+.destination_img_box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.destination_img_box div {
+    object-fit: cover;
+    height: 300px;
+    position: relative;
+}
+
+.destination_img_box div span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.dest_1 {
+    grid-column: 1 / span 6;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/maldivs.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_2 {
+    grid-column: 7 / span 6;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/indonesia.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_3 {
+    grid-column: 1 / span 4;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/srilanka.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_4 {
+    grid-column: 5 / span 5;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/north\ america.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_5 {
+    grid-column: 10 / span 3;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/kashmir.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_6 {
+    grid-column: 1 / span 5;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/bangladesh.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dest_7 {
+    grid-column: 6 / span 7;
+    background: linear-gradient(
+            0deg,
+            rgba(19, 19, 24, 0.2) 0%,
+            rgba(19, 19, 24, 0.2) 100%
+        ),
+        url("../images/bandorban.png"), lightgray 50% / cover no-repeat;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Why Choose Us Ssection Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.content-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+.content-box h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--black);
+    text-align: center;
+}
+.content-box p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    margin-top: 1.4rem;
+}
+.hotels_and_service {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+}
+.hotel {
+    border-radius: 16px;
+    border: 1px solid rgba(251, 181, 99, 0.2);
+    background: rgba(251, 181, 99, 0.05);
+    padding: 2rem;
+}
+.best_price_parent .best_price {
+    border-radius: 16px;
+    border: 1px solid rgba(251, 181, 99, 0.2);
+    background: rgba(233, 68, 68, 0.05);
+    padding: 2rem;
+}
+.service {
+    border-radius: 16px;
+    border: 1px solid rgba(41, 206, 246, 0.2);
+    background: rgba(41, 206, 246, 0.05);
+    padding: 2rem;
+}
+.hotel img,
+.service img,
+.best_price img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 2rem;
+}
+.hotel h3,
+.service h3,
+.best_price h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+.hotel p,
+.service p,
+.best_price p {
+    font-size: 1rem;
+    color: var(--secondary_black);
+    line-height: 1.5rem;
+}
+
+.best_price_parent {
+    position: relative;
+    width: 100%;
+}
+.best_price_parent .best_price {
+    width: 48.5%;
+    position: relative;
+
+    left: 50%;
+    transform: translate(-50%);
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Deals and Discount Section Ssection Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.deals_and_discount_parent {
+    margin-top: 6rem;
+}
+.discount_content_box h2 {
+    color: var(--black);
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.discount_content_box p {
+    font-size: 1rem;
+    color: var(--primary_black);
+    line-height: 1.5rem;
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+.discount_banner {
+    border-radius: 16px;
+    height: 500px;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 3.6rem;
+}
+#banner_2 {
+    display: flex;
+    justify-content: start;
+    padding-left: 3.6rem;
+}
+#banner_1 {
+    background: url("../images/discount-1.png"), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#banner_2 {
+    background: url("../images/discount-2.png"), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#banner_3 {
+    background: url("../images/discount-1.png"), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.discount_cart {
+    width: 579px;
+    /* height: 389px; */
+    border-radius: 16px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2.5px);
+    padding: 2rem 3.2rem;
+}
+
+.cart_header {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.cart_header div {
+    display: flex;
+    align-items: center;
+}
+.cart_header div p {
+    font-size: 1rem;
+    color: var(--secondary_black);
+}
+.cart_header div img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.cart_content h2 {
+    color: var(--black);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.cart_content p {
+    color: var(--secondary_black);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+.cart_content h3 {
+    color: var(--primary_red);
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Perfect Place Section Ssection Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.perfect_place_parent {
+    display: flex;
+    margin-top: 7rem;
+    gap: 28px;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+.perfect_place_parent div {
+    flex: 1;
+}
+.perfect_place_content_box h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+.perfect_place_content_box p {
+    font-size: 1rem;
+    color: var(--secondary_black);
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.perfect_place_content_box ul {
+    padding-left: 1.5rem;
+}
+.perfect_place_content_box ul li {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.perfect_place_content_box button {
+    margin-top: 1rem;
+}
+.perfect_place_video {
+    /* border: 1px solid blue; */
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+video {
+    width: 100%;
+    border-radius: 16px;
+}
+.perfect_place_video h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 36px;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Reviews Section   Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.reviews_parent {
+    margin: 100px 0;
+}
+.reviews_content_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+.reviews_content_box h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--black);
+}
+.reviews_content_box p {
+    font-size: 1rem;
+    color: var(--secondary_black);
+    padding: 1rem 0;
+    text-align: center;
+}
+.review_img_box {
+    display: flex;
+    gap: 20px;
+
+    margin: 0 auto;
+}
+.review_box_parent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reviw_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.review_img_box div {
+    flex: 1;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 12px solid var(--primary_red);
+}
+.review_img_box div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.review_content_box h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--primary_black);
+}
+.review_content_box h3 {
+    font-size: 1rem;
+    column-rule: var(--secondary_black);
+    font-weight: 400;
+}
+.review_content_box div {
+    color: #ffa534;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Newsletter Section   Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+.newsletter_parent {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 6.25rem;
+}
+.newsletter_parent div {
+    flex: 1;
+}
+.newsletter_form {
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--primary_red);
+}
+.newsletter_form h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+.newsletter_form p {
+    font-size: 1rem;
+    color: var(--secondary_black);
+    line-height: 1.5rem;
+    margin-bottom: 3rem;
+}
+.newsletter_form form > input {
+    padding: 1rem 1.4rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: rgba(19, 19, 24, 0.05);
+    width: 100%;
+    margin-bottom: 16px;
+}
+.newsletter_form form > button {
+    width: 100%;
+}
+.newsletter_img_box {
+    position: relative;
+}
+.newsletter_img_box img {
+    width: 100%;
+    height: 100%;
+}
+.save_card {
+    position: absolute;
+    border-radius: 16px;
+    background: var(--primary_red);
+    padding: 1rem;
+    transform: rotate(-19.628deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    bottom: 43px;
+    right: 6px;
+}
+.save_card span {
+    color: var(--white);
+    text-align: center;
+    font-size: 1.5rem;
+}
+.save_card p {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 800;
+}
+.btn_parent {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* =========> Ends <=========== */
+/* >>>>>>>>>> Footer Section Related Styles<<<<<<<<<< */
+/* =========> Starts <=========== */
+footer {
+    background: rgba(19, 19, 24, 0.05);
+    padding: 6rem 0;
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer_parent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+.footer_title {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.footer_title img {
+    width: 40px;
+    height: 46.673px;
+}
+.footer_title h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+.footer_title h2 span {
+    color: var(--primary_red);
+}
+.footer_title p {
+    color: var(--secondary_black);
+    text-align: center;
+    font-size: 1rem;
+    line-height: 26px; /* 162.5% */
+}
+.social_media {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.social_media a {
+    text-decoration: none;
+    color: black;
+}
+.copy_right {
+    margin-top: 3rem;
+    text-align: center;
+}
+.copy_right span {
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 300;
+}
+.footer_para {
+    padding: 0 3rem;
+    margin-top: 2rem;
+    text-align: justify;
+}
+.hr-line {
+    border-top: 2px solid rgba(19, 19, 24, 0.1);
+    width: 40%;
+    display: inline-block;
+}
+.f-p {
+    text-align: center;
+}
