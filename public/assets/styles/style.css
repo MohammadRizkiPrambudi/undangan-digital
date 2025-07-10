@@ -15,6 +15,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 /* body styles */
 body {
     font-family: "Mulish", sans-serif;
@@ -41,6 +45,21 @@ footer {
     background: var(--primary_red);
     cursor: pointer;
 }
+/* button login */
+.login-btn {
+    background-color: #57e32c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #e04a6c;
+}
+
 .para {
     color: #5a5a5d;
     font-size: 1rem;
@@ -89,6 +108,37 @@ footer {
 }
 .nav_menu_box > .bars {
     display: none;
+}
+
+/* =========> Navbar Underline Hover & Active <=========== */
+.nav_menu_box ul li a {
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.nav_menu_box ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--primary_red);
+    transition: width 0.3s ease;
+}
+
+.nav_menu_box ul li a:hover::after {
+    width: 100%;
+}
+
+.nav_menu_box ul li a.active::after {
+    width: 100%;
+}
+
+.nav_menu_box ul li a.active {
+    color: var(--primary_red);
+    font-weight: 700;
 }
 /* =========> Ends <=========== */
 /* >>>>>>>>>>>Banner Related Styles<<<<<<<<<< */

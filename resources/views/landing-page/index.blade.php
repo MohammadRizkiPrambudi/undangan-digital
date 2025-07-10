@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Journey Savior</title>
+    <title>Nikah Kuy</title>
     <!-- Fav Icon Link  -->
     <link rel="shortcut icon" href="{{ asset('assets/images/journey savior.png') }}" type="image/x-icon">
     <!-- External Style Sheet Link Up  -->
@@ -30,9 +30,14 @@
             <div class="nav_menu_box">
                 <ul>
                     <li><a id="Home_Menu" href="#">Home</a></li>
-                    <li><a href="#">Katalog</a></li>
-                    <li><a href="#">Testimonial</a></li>
+                    <li><a href="{{ route('Home_Menu') }}#katalog">Katalog</a></li>
+                    <li><a href="{{ route('Home_Menu') }}#testimonial">Testimonial</a></li>
                     <li><a href="#">Kontak Kami</a></li>
+                    <li>
+                        <a href="{{ route('login') }}" class="login-btn">
+                         <i class="fa-solid fa-right-to-bracket"></i> Login
+                         </a>
+                     </li>
                 </ul>
                 <!-- Mobile Devices Responsive Bars  -->
                 <span class="bars"><i class="fa-solid fa-bars"></i></span>
@@ -57,7 +62,7 @@
             </div>
         </section>
         <!-- Why Choose Us Section  -->
-        <section>
+        <section id="katalog">
             <div class="why_choose_us_parent">
                 <div class="content-box">
                     <h1>Katalog</h1>
@@ -194,11 +199,11 @@
             </div>
         </section>
         <!-- Our Review Section  -->
-        <section>
+        <section id="testimonial">
             <div class="reviews_parent">
                 <div class="reviews_content_box">
-                    <h2>Our Reviews</h2>
-                    <p>Here is our Most Resent Reviews</p>
+                    <h2>Testimonial</h2>
+                    <p>Rattings From Customers For Us</p>
                 </div>
                 <div class="review_box_parent">
                     <div class="reviw_box">
