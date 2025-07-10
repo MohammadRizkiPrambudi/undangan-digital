@@ -397,8 +397,8 @@ footer {
 .hotel img,
 .service img,
 .best_price img {
-    width: 64px;
-    height: 64px;
+    width: 400px;
+    height: 250px;
     margin-bottom: 2rem;
 }
 .hotel h3,

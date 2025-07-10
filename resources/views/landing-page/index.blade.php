@@ -32,7 +32,7 @@
                     <li><a id="Home_Menu" href="#">Home</a></li>
                     <li><a href="#">Katalog</a></li>
                     <li><a href="#">Testimonial</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
                 </ul>
                 <!-- Mobile Devices Responsive Bars  -->
                 <span class="bars"><i class="fa-solid fa-bars"></i></span>
@@ -42,10 +42,9 @@
         <div class="banner">
             <div class="banner_content_box">
                 <h1>Nikah Kuy</h1>
-                <p>Undangan Digital, Cinta yang Tersampaikan</p>
+                <p>Undangan Digital, Cerita Cinta yang Dibagikan</p>
             </div>
             <div class="banner_input_box">
-
                 <div class="btn find_now"><i class="fa-brands fa-whatsapp"></i><button class="find_btn">Pesan
                         Sekarang</button></div>
             </div>
@@ -55,94 +54,25 @@
         <!-- Our Popular Tours Section  -->
         <section>
             <div class="popular_tours_parent">
-                <div class="popular_tours_content_box">
-                    <h2>Our Popular Tours</h2>
-                    <p>Embark on a journey of discovery with 'Our Popular Tours.' Immerse yourself in curated
-                        experiences, from
-                        iconic.
-                    </p>
-                    <ul>
-                        <li>Explore extraordinary destinations with 'Our Popular Tours.' From iconic landmarks to hidden
-                            gems.
-                        </li>
-                        <li>Discover enchanting places through 'Our Popular Tours.' Immerse in unique cultures and
-                            scenic beauty.
-                        </li>
-                        <li>Join 'Our Popular Tours' for memorable journeys. Uncover hidden treasures, explore diverse
-                            landscapes,
-                            and embrace the
-                            magic of travel with curated experiences.
-                        </li>
-                    </ul>
-                    <p>Embark on unforgettable journeys with 'Our Popular Tours.' Join us to uncover hidden treasures,
-                        explore
-                        diverse.</p>
-                    <button class="btn">Read More</button>
-                </div>
-                <div class="popular_tours_img_box">
-                    <img src="{{ asset('assets/images/Rectangle 4.png') }}" alt="Our Popular Tours">
-                </div>
-
-            </div>
-        </section>
-        <!-- Choose your destination section  -->
-        <section>
-            <div class="destination_parent">
-                <div class="destination_content_box">
-                    <h2>Choose Your Destination</h2>
-                    <p>Explore endless possibilities with our travel website. <br>Choose your destination and unlock a
-                        world of
-                        captivating <br>
-                        experiences and unforgettable adventures. Start your journey today.</p>
-                </div>
-                <div class="destination_img_box">
-                    <div class="dest_1"><span>Maldives</span></div>
-                    <div class="dest_2"><span>Indonesia</span></div>
-                    <div class="dest_3"><span>Srilanka</span></div>
-                    <div class="dest_4"><span>North America</span></div>
-                    <div class="dest_5"><span>Kashmir</span></div>
-                    <div class="dest_6"><span>Bangladesh</span></div>
-                    <div class="dest_7"><span>Bandarban</span></div>
-                </div>
             </div>
         </section>
         <!-- Why Choose Us Section  -->
         <section>
             <div class="why_choose_us_parent">
                 <div class="content-box">
-                    <h1>Why Choose Us</h1>
-                    <p>Journey Savior is your trusted companion in travel. Choose us for seamless adventures, expert
-                        guidance, and
-                        personalized
-                        experiences. Discover peace of mind as you explore the world with confidence</p>
+                    <h1>Katalog</h1>
+                    <p>Pilihan Tema Undangan Digital</p>
                 </div>
                 <div class="hotels_and_service">
+
                     <div class="hotel">
-                        <img src="{{ asset('assets/images/hotel 1.png') }}" alt="">
-                        <h3>Handpicked Hotels</h3>
-                        <p>Journey Savior is your trusted companion in travel. Choose us for seamless adventures, expert
-                            guidance,
-                            and personalized
-                            experiences. Discover peace of mind as you explore the world with confidence</p>
-                    </div>
-                    <div class="service">
-                        <img src="{{ asset('images/map 1.png') }}" alt="">
-                        <h3>World Class Service</h3>
-                        <p>Discover comfort and luxury with Journey Savior's handpicked hotels. We curate exceptional
-                            accommodations, ensuring
-                            every stay is a perfect blend of indulgence and tranquility. Elevate your travel experience.
-                        </p>
-                    </div>
-                </div>
-                <div class="best_price_parent">
-                    <div class=" best_price">
-                        <img src="{{ asset('images/price-tag 1.png') }}" alt="">
-                        <h3>Best Price Guarantee</h3>
-                        <p>Experience worry-free travel with Journey Savior's Best Price Guarantee. We ensure the most
-                            competitive
-                            prices,
-                            offering value without compromise. Your dream journey awaits, affordably and confidently.
-                        </p>
+                        <img src="{{ asset('assets/images/undangan 1.png') }}">
+                        <h3>Tema Undangan 1</h3>
+                        <p>Rp. 50.000</p>
+                        <div class="btn find_now">
+                            <button class="find_btn">
+                                Pesan</button>
+                        </div>
                     </div>
                 </div>
             </div>
