@@ -50,32 +50,61 @@
             width: 100%;
             height: 100%;
         }
-        html {
-         scroll-behavior: smooth;
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #carousel .flex {
+            transition: transform 0.8s ease-in-out;
+            will-change: transform;
+        }
+
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .scrolled .nav-link {
+            color: #1f2937;
+            /* text-base-content (tw gray-800) */
+        }
     </style>
 </head>
+
 <body class="bg-base-100 text-base-content">
 
     <!-- Navbar -->
-    <div class="navbar fixed top-0 z-50 bg-base-100 w-full">
+    <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
+
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-sky-500">Kuy</span></a>
+            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-sky-600">Kuy</span></a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 hidden md:flex">
-                <li><a href="#hero">Beranda</a></li>
-                <li><a href="#katalog">Tema</a></li>
-                <li><a href="#harga">Harga</a></li>
-                <li><a href="#testimoni">Testimoni</a></li>
-                <li><a href="#footer">Kontak</a></li>
+                <li><a href="#hero" class="nav-link">Beranda</a></li>
+                <li><a href="#katalog" class="nav-link">Tema</a></li>
+                <li><a href="#harga" class="nav-link">Harga</a></li>
+                <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
+                <li><a href="#footer" class="nav-link">Kontak</a></li>
             </ul>
+
             <div class="flex gap-2 ml-2">
-                <a href="{{ route('login') }}" class="btn btn-outline btn-xs">
+                <a href="{{ route('login') }}"
+                    class="btn btn-outline btn-xs border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white">
                     <i class="fa-solid fa-right-to-bracket mr-1 text-sm"></i> Login
                 </a>
-                <a href="{{ route('register') }}" class="btn btn-outline btn-xs">
+                <a href="{{ route('register') }}"
+                    class="btn btn-outline btn-xs border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white">
                     <i class="fa-solid fa-user-plus mr-1 text-sm"></i> Register
                 </a>
             </div>
@@ -83,16 +112,17 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero min-h-screen pt-20 bg-cover opacity-70 bg-center" style="background-image: url('/images/hero.jpg');">
+    <section id="hero" class="hero min-h-screen pt-20 bg-cover opacity-70 bg-center"
+        style="background-image: url('/images/hero.jpg');">
         <div class="hero-content text-center text-white bg-black/50 backdrop-blur-sm rounded-xl p-8">
             <div class="max-w-2xl">
                 <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
-                <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.</p>
-                <a href="#katalog" class="btn bg-purple-600 text-white">Lihat Tema</a>
+                <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
+                </p>
+                <a href="#katalog" class="btn bg-purple-600 text-white">Pesan Sekarang</a>
             </div>
         </div>
     </section>
-
 
     <!-- Katalog Tema -->
     <section id="katalog" class="py-16 bg-white">
@@ -162,7 +192,7 @@
         </div>
 
         <!-- Carousel Container -->
-        <div id="carousel" class="max-w-5xl mx-auto overflow-x-scroll no-scrollbar scroll-smooth">
+        <div id="carousel" class="max-w-5xl mx-auto overflow-hidden">
             <div class="flex w-max">
                 <!-- Item 1 -->
                 <div class="w-80 shrink-0 p-4">
@@ -213,33 +243,35 @@
         </div>
     </section>
 
-            <!-- Section Kontak -->
+    <!-- Section Kontak -->
     <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-12">
         <div class="text-center mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-sky-400">Hubungi Kami</h2>
-        <p class="text-gray-500 text-sm md:text-base">Punya pertanyaan atau mau custom undangan? Kirim pesanmu di sini!</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-sky-400">Hubungi Kami</h2>
+            <p class="text-gray-500 text-sm md:text-base">Punya pertanyaan atau mau custom undangan? Kirim pesanmu di
+                sini!</p>
         </div>
-            <div class="max-w-xl mx-auto px-4">
-        <div class="card bg-white shadow-md p-6 md:p-8">
-        <form>
-            <div class="mb-4">
-            <label class="block mb-2 text-sm font-semibold text-gray-600">Nama Lengkap</label>
-            <input type="text" placeholder="Nama Kamu" class="input input-bordered w-full text-sm" />
+        <div class="max-w-xl mx-auto px-4">
+            <div class="card bg-white shadow-md p-6 md:p-8">
+                <form>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-gray-600">Nama Lengkap</label>
+                        <input type="text" placeholder="Nama Kamu" class="input input-bordered w-full text-sm" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-gray-600">Email</label>
+                        <input type="email" placeholder="email@example.com"
+                            class="input input-bordered w-full text-sm" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-gray-600">Pesan</label>
+                        <textarea class="textarea textarea-bordered w-full text-sm" rows="3" placeholder="Tulis pesan kamu di sini..."></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn bg-purple-600 text-white btn-sm md:btn-md">Kirim Pesan</button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-4">
-            <label class="block mb-2 text-sm font-semibold text-gray-600">Email</label>
-            <input type="email" placeholder="email@example.com" class="input input-bordered w-full text-sm" />
-            </div>
-            <div class="mb-4">
-            <label class="block mb-2 text-sm font-semibold text-gray-600">Pesan</label>
-            <textarea class="textarea textarea-bordered w-full text-sm" rows="3" placeholder="Tulis pesan kamu di sini..."></textarea>
-            </div>
-            <div class="text-right">
-            <button class="btn bg-purple-600 text-white btn-sm md:btn-md">Kirim Pesan</button>
-            </div>
-        </form>
         </div>
-    </div>
     </section>
 
     <!-- Footer -->
@@ -266,8 +298,15 @@
         const carousel = document.getElementById('carousel');
         const track = carousel.querySelector('.flex');
         const items = track.querySelectorAll('.w-80');
-        const itemWidth = items[0].offsetWidth + 32; // width + padding (Tailwind p-4 = 16px each side)
-        const itemsPerSlide = 3;
+        let itemsPerSlide = getItemsPerSlide();
+
+        function getItemsPerSlide() {
+            return window.innerWidth < 768 ? 1 : 3; // 1 item di HP, 3 item di desktop
+        }
+
+        function getItemWidth() {
+            return items[0].offsetWidth + 32; // w-80 (320px) + padding 2*16px = 352px
+        }
 
         let currentIndex = 0;
 
@@ -275,12 +314,35 @@
             const maxIndex = Math.ceil(items.length / itemsPerSlide) - 1;
             currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
 
-            track.style.transform = `translateX(-${currentIndex * itemWidth * itemsPerSlide}px)`;
-            track.style.transition = 'transform 1s ease-in-out';
+            const offset = currentIndex * getItemWidth() * itemsPerSlide;
+            track.style.transform = `translateX(-${offset}px)`;
+            track.style.transition = 'transform 0.8s ease-in-out';
         }
 
+        // Update itemsPerSlide on resize
+        window.addEventListener('resize', () => {
+            itemsPerSlide = getItemsPerSlide();
+            currentIndex = 0; // reset ke awal
+            track.style.transform = `translateX(0px)`;
+        });
+
         setInterval(slideCarousel, 3000);
+
+
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
+                navbar.classList.remove('bg-transparent', 'text-white');
+            } else {
+                navbar.classList.add('bg-transparent', 'text-white');
+                navbar.classList.remove('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
+            }
+        });
     </script>
 
+
 </body>
+
 </html>
