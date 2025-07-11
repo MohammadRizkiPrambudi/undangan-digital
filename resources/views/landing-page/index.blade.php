@@ -7,6 +7,8 @@
     <title>Nikah Kuy</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @keyframes slide {
 
@@ -48,18 +50,18 @@
             width: 100%;
             height: 100%;
         }
+        html {
+         scroll-behavior: smooth;
+        }
+
     </style>
-
-
-
 </head>
-
 <body class="bg-base-100 text-base-content">
 
     <!-- Navbar -->
     <div class="navbar fixed top-0 z-50 bg-base-100 w-full">
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl font-bold">NikahKuy</a>
+            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-sky-500">Kuy</span></a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 hidden md:flex">
@@ -69,25 +71,33 @@
                 <li><a href="#testimoni">Testimoni</a></li>
                 <li><a href="#footer">Kontak</a></li>
             </ul>
+            <div class="flex gap-2 ml-2">
+                <a href="{{ route('login') }}" class="btn btn-outline btn-xs">
+                    <i class="fa-solid fa-right-to-bracket mr-1 text-sm"></i> Login
+                </a>
+                <a href="{{ route('register') }}" class="btn btn-outline btn-xs">
+                    <i class="fa-solid fa-user-plus mr-1 text-sm"></i> Register
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero min-h-screen bg-gradient-to-r from-pink-100 to-purple-200 pt-20">
-        <div class="hero-content text-center">
+    <section id="hero" class="hero min-h-screen pt-20 bg-cover opacity-70 bg-center" style="background-image: url('/images/hero.jpg');">
+        <div class="hero-content text-center text-white bg-black/50 backdrop-blur-sm rounded-xl p-8">
             <div class="max-w-2xl">
                 <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
-                <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
-                </p>
-                <a href="#katalog" class="btn btn-primary">Lihat Tema</a>
+                <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.</p>
+                <a href="#katalog" class="btn bg-purple-600 text-white">Lihat Tema</a>
             </div>
         </div>
     </section>
 
+
     <!-- Katalog Tema -->
     <section id="katalog" class="py-16 bg-white">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold">Pilih Tema Undangan</h2>
+            <h2 class="text-3xl font-bold text-sky-400">Pilih Tema Undangan</h2>
             <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
@@ -118,7 +128,7 @@
     <!-- Harga Paket -->
     <section id="harga" class="py-16 bg-base-200">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold">Paket Harga</h2>
+            <h2 class="text-3xl font-bold text-sky-400">Paket Harga</h2>
             <p class="text-gray-500">Sesuaikan dengan kebutuhan dan budgetmu</p>
         </div>
         <div class="flex flex-col md:flex-row justify-center gap-6 max-w-5xl mx-auto px-4">
@@ -128,7 +138,7 @@
                     <p>Undangan standar dengan 1 tema</p>
                     <p class="text-2xl font-bold mt-4">Rp 150.000</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Pesan</button>
+                        <button class="btn bg-purple-600 text-white">Pesan</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +148,7 @@
                     <p>Semua tema + musik + RSVP</p>
                     <p class="text-2xl font-bold mt-4">Rp 300.000</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Pesan</button>
+                        <button class="btn bg-purple-600 text-white">Pesan</button>
                     </div>
                 </div>
             </div>
@@ -148,7 +158,7 @@
     <!-- Testimoni (Auto Slide + Estetik) -->
     <section id="testimoni" class="py-16 bg-white">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold">Apa Kata Mereka?</h2>
+            <h2 class="text-3xl font-bold text-sky-400">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
         </div>
 
@@ -200,6 +210,34 @@
         </div>
     </section>
 
+            <!-- Section Kontak -->
+    <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-12">
+        <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-sky-400">Hubungi Kami</h2>
+        <p class="text-gray-500 text-sm md:text-base">Punya pertanyaan atau mau custom undangan? Kirim pesanmu di sini!</p>
+        </div>
+            <div class="max-w-xl mx-auto px-4">
+        <div class="card bg-white shadow-md p-6 md:p-8">
+        <form>
+            <div class="mb-4">
+            <label class="block mb-2 text-sm font-semibold text-gray-600">Nama Lengkap</label>
+            <input type="text" placeholder="Nama Kamu" class="input input-bordered w-full text-sm" />
+            </div>
+            <div class="mb-4">
+            <label class="block mb-2 text-sm font-semibold text-gray-600">Email</label>
+            <input type="email" placeholder="email@example.com" class="input input-bordered w-full text-sm" />
+            </div>
+            <div class="mb-4">
+            <label class="block mb-2 text-sm font-semibold text-gray-600">Pesan</label>
+            <textarea class="textarea textarea-bordered w-full text-sm" rows="3" placeholder="Tulis pesan kamu di sini..."></textarea>
+            </div>
+            <div class="text-right">
+            <button class="btn bg-purple-600 text-white btn-sm md:btn-md">Kirim Pesan</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </section>
 
     <!-- Footer -->
     <footer id="footer" class="footer p-10 bg-base-200 text-base-content">
@@ -217,7 +255,7 @@
         <nav>
             <h6 class="footer-title">Kontak</h6>
             <a class="link link-hover">Email: info@nikahkuy.com</a>
-            <a class="link link-hover">WhatsApp: +62 812-3456-7890</a>
+            <a class="link link-hover">WhatsApp: +62 857-2727-2944</a>
         </nav>
     </footer>
 

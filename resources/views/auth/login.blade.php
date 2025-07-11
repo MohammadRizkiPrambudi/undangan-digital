@@ -3,78 +3,54 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Page</title>
-    <link rel="stylesheet" href="{{ asset('assets/vendors/feather/feather.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/ti-icons/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/vertical-layout-light/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - NikahKuy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('/images/bglogin.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
-
-<body>
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth px-0">
-                <div class="row w-100 mx-0">
-                    <div class="col-lg-4 mx-auto">
-                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                            <div class="brand-logo">
-                                <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
-                            </div>
-                            <h4>Selamat Datang</h4>
-                            <h6 class="font-weight-light">Silahkan Login Terlebih Dahulu</h6>
-                            @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-                            <form method="POST" action="{{ route('login') }}" class="pt-3">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" name="email"
-                                        placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password"
-                                        placeholder="Password" required>
-                                </div>
-                                <div class="mt-3">
-                                    <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                                        SIGN IN
-                                    </button>
-                                </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input" name="remember">
-                                            Keep Sign In
-                                        </label>
-                                    </div>
-                                    <a href="#" class="auth-link text-black">Lupa Password</a>
-                                </div>
-                                {{-- <div class="mb-2">
-                                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                                        <i class="ti-facebook mr-2"></i>Connect using facebook
-                                    </button>
-                                </div> --}}
-                                <div class="text-center mt-4 font-weight-light">
-                                    Apakah sudah punya Akun? <a href="/register" class="text-primary">Buat Akun</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+    <body class="min-h-screen flex items-center justify-center px-4">
+        <div class="w-full max-w-md bg-white/30 backdrop-blur-sm p-8 rounded-xl shadow-md">
+            <div class="flex justify-center mb-6">
+                <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" class="h-12">
+            </div>
+            <h2 class="text-2xl font-bold text-center text-sky-500 mb-2">Selamat Datang</h2>
+            <p class="text-center text-gray-800 text-sm mb-6">Silahkan Login Terlebih Dahulu</p>
+            @if (session('error'))
+                <div class="bg-red-100 text-red-700 p-2 rounded mb-4 text-center text-sm">
+                    {{ session('error') }}
                 </div>
+            @endif
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="mb-4">
+                    <input type="email" name="email" placeholder="Email" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">
+                </div>
+                <div class="mb-4">
+                    <input type="password" name="password" placeholder="Password" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <label class="flex items-center text-sm text-gray-800">
+                        <input type="checkbox" name="remember" class="mr-2">
+                        Keep Sign In
+                    </label>
+                    <a href="#" class="text-sky-500 text-sm hover:underline">Lupa Password?</a>
+                </div>
+                <button type="submit"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition">
+                    SIGN IN
+                </button>
+            </form>
+            <div class="mt-6 text-center text-sm text-white">
+                Belum punya akun? <a href="/register" class="text-purple-600 hover:underline">Buat Akun</a>
             </div>
         </div>
-    </div>
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
-    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ asset('assets/js/template.js') }}"></script>
-    <script src="{{ asset('assets/js/settings.js') }}"></script>
-    <script src="{{ asset('assets/js/todolist.js') }}"></script>
-</body>
-
+    </body>
 </html>
