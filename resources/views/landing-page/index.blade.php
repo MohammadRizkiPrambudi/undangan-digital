@@ -48,6 +48,26 @@
             width: 100%;
             height: 100%;
         }
+
+
+        /* Sembunyikan scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Responsive untuk mobile: 1 item */
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 100% !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+        }
     </style>
 
 
@@ -145,57 +165,60 @@
         </div>
     </section>
 
-    <!-- Testimoni (Auto Slide + Estetik) -->
     <section id="testimoni" class="py-16 bg-white">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
         </div>
 
-        <div class="carousel-container relative h-72 flex items-center justify-center max-w-xl mx-auto">
-            <div class="carousel w-full h-full relative">
-                <!-- Slide 1 -->
-                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 0s;">
+        <!-- Carousel Container -->
+        <div id="carousel" class="max-w-5xl mx-auto overflow-x-scroll no-scrollbar scroll-smooth">
+            <div class="flex w-max">
+                <!-- Item 1 -->
+                <div class="w-80 shrink-0 p-4">
                     <div
-                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
-                        <div class="flex flex-col items-center">
-                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
-                                class="w-16 h-16 rounded-full mb-4" />
-                            <p class="italic">“Undangannya cantik dan mudah dikirim ke semua tamu. Sangat puas!”</p>
-                            <p class="font-bold mt-2">– Rina & Dimas</p>
-                        </div>
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
+                        <img src="https://i.pravatar.cc/100?img=32" class="w-16 h-16 rounded-full mb-4" />
+                        <p class="italic">“Undangannya cantik dan mudah dikirim ke semua tamu. Sangat puas!”</p>
+                        <p class="font-bold mt-2">– Rina & Dimas</p>
                     </div>
                 </div>
-
-
-                <!-- Slide 2 -->
-                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 5s;">
+                <!-- Item 2 -->
+                <div class="w-80 shrink-0 p-4">
                     <div
-                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
-                        <div class="flex flex-col items-center">
-                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
-                                class="w-16 h-16 rounded-full mb-4" />
-                            <p class="italic">“Simple, elegan, dan banyak pilihan tema. Recommended!”</p>
-                            <p class="font-bold mt-2">– Rina & Dimas</p>
-                        </div>
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
+                        <img src="https://i.pravatar.cc/100?img=33" class="w-16 h-16 rounded-full mb-4" />
+                        <p class="italic">“Simple, elegan, dan banyak pilihan tema. Recommended!”</p>
+                        <p class="font-bold mt-2">– Andi & Sari</p>
                     </div>
                 </div>
-
-
-                <!-- Slide 3 -->
-
-                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 10s;">
+                <!-- Item 3 -->
+                <div class="w-80 shrink-0 p-4">
                     <div
-                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
-                        <div class="flex flex-col items-center">
-                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
-                                class="w-16 h-16 rounded-full mb-4" />
-                            <p class="italic">“Bikin undangan digital gak ribet, tinggal kirim link aja.”</p>
-                            <p class="font-bold mt-2">– Rina & Dimas</p>
-                        </div>
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
+                        <img src="https://i.pravatar.cc/100?img=34" class="w-16 h-16 rounded-full mb-4" />
+                        <p class="italic">“Bikin undangan digital gak ribet, tinggal kirim link aja.”</p>
+                        <p class="font-bold mt-2">– Fajar & Indah</p>
                     </div>
                 </div>
-
+                <!-- Item 4 -->
+                <div class="w-80 shrink-0 p-4">
+                    <div
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
+                        <img src="https://i.pravatar.cc/100?img=35" class="w-16 h-16 rounded-full mb-4" />
+                        <p class="italic">“Pelayanan cepat dan responsif. Saya puas sekali!”</p>
+                        <p class="font-bold mt-2">– Lia & Budi</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="w-80 shrink-0 p-4">
+                    <div
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
+                        <img src="https://i.pravatar.cc/100?img=36" class="w-16 h-16 rounded-full mb-4" />
+                        <p class="italic">“Tema-tema undangan sangat variatif dan menarik!”</p>
+                        <p class="font-bold mt-2">– Riko & Maya</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -220,6 +243,27 @@
             <a class="link link-hover">WhatsApp: +62 812-3456-7890</a>
         </nav>
     </footer>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const track = carousel.querySelector('.flex');
+        const items = track.querySelectorAll('.w-80');
+        const itemWidth = items[0].offsetWidth + 32; // width + padding (Tailwind p-4 = 16px each side)
+        const itemsPerSlide = 3;
+
+        let currentIndex = 0;
+
+        function slideCarousel() {
+            const maxIndex = Math.ceil(items.length / itemsPerSlide) - 1;
+            currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
+
+            track.style.transform = `translateX(-${currentIndex * itemWidth * itemsPerSlide}px)`;
+            track.style.transition = 'transform 1s ease-in-out';
+        }
+
+        setInterval(slideCarousel, 3000);
+    </script>
+
 
 </body>
 
