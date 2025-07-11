@@ -78,6 +78,11 @@
             color: #1f2937;
             /* text-base-content (tw gray-800) */
         }
+
+        html[data-theme="dark"] #navbar.scrolled .nav-link {
+            color: #ffffff !important;
+            /* atau #f3f4f6 */
+        }
     </style>
 </head>
 
@@ -87,7 +92,7 @@
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
 
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-sky-600">Kuy</span></a>
+            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-purple-600">Kuy</span></a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 hidden md:flex">
@@ -99,14 +104,13 @@
             </ul>
 
             <div class="flex gap-2 ml-2">
-                <a href="{{ route('login') }}"
-                    class="btn btn-outline btn-xs border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white">
+                <a href="{{ route('login') }}" class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700">
                     <i class="fa-solid fa-right-to-bracket mr-1 text-sm"></i> Login
                 </a>
-                <a href="{{ route('register') }}"
-                    class="btn btn-outline btn-xs border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white">
+                <a href="{{ route('register') }}" class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700">
                     <i class="fa-solid fa-user-plus mr-1 text-sm"></i> Register
                 </a>
+
             </div>
         </div>
     </div>
@@ -119,7 +123,8 @@
                 <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
                 <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
                 </p>
-                <a href="#katalog" class="btn bg-purple-600 text-white">Pesan Sekarang</a>
+                <a href="#katalog" class="btn bg-purple-600 text-white"> <i
+                        class=" fa-solid fa-brands fa-whatsapp text-sm"></i>Pesan Sekarang</a>
             </div>
         </div>
     </section>
@@ -132,21 +137,21 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 1" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 1" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Tema Elegant</h2>
                     <p>Kesan mewah dan klasik</p>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 2" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 2" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Tema Floral</h2>
                     <p>Romantis dan penuh warna</p>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 3" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 3" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Tema Minimalis</h2>
                     <p>Sederhana dan modern</p>
@@ -294,8 +299,9 @@
         </nav>
     </footer>
 
-    <button id="darkToggle" class="fixed bottom-6 right-6 bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-700 transition z-50">
-    <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
+    <button id="darkToggle"
+        class="fixed bottom-6 right-6 bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-700 transition z-50">
+        <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
     </button>
 
 
@@ -347,32 +353,33 @@
         });
 
         const toggleBtn = document.getElementById('darkToggle');
-    const icon = document.getElementById('darkIcon');
-    const htmlTag = document.documentElement;
+        const icon = document.getElementById('darkIcon');
+        const htmlTag = document.documentElement;
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    let theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-    applyTheme(theme);
-
-    function applyTheme(mode) {
-        if (mode === 'dark') {
-            htmlTag.setAttribute('data-theme', 'dark');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            htmlTag.removeAttribute('data-theme');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
-
-    // Klik togle
-    toggleBtn.addEventListener('click', () => {
-        theme = htmlTag.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        localStorage.setItem('theme', theme);
+        let theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
         applyTheme(theme);
-    });
+
+        function applyTheme(mode) {
+            if (mode === 'dark') {
+                htmlTag.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                htmlTag.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Klik togle
+        toggleBtn.addEventListener('click', () => {
+            theme = htmlTag.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+        });
     </script>
 </body>
+
 </html>
