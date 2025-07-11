@@ -92,7 +92,7 @@
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
 
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-purple-600">Kuy</span></a>
+            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-purple-500">Kuy</span></a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 hidden md:flex">
@@ -291,6 +291,7 @@
             <a href="#katalog" class="link link-hover">Tema</a>
             <a href="#harga" class="link link-hover">Harga</a>
             <a href="#testimoni" class="link link-hover">Testimoni</a>
+            <a href="#kontak" class="link link-hover">Kontak</a>
         </nav>
         <nav>
             <h6 class="footer-title">Kontak</h6>
