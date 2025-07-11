@@ -2,327 +2,225 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awesome linkup  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nikah Kuy</title>
-    <!-- Fav Icon Link  -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/journey savior.png') }}" type="image/x-icon">
-    <!-- External Style Sheet Link Up  -->
-    <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
-    <!-- External Responsive Related Style Sheet Link Up  -->
-    <link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slide {
+
+            0%,
+            30% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            33.33%,
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .carousel-item {
+            opacity: 0;
+            width: 100%;
+            animation: slide 15s infinite;
+        }
+
+        .carousel-item:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .carousel-item:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 320px;
+            /* Tinggi tetap agar semua kartu sejajar */
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+
 </head>
 
-<body>
-    <header class="container">
-        <!-- Header Navigation Menu  -->
+<body class="bg-base-100 text-base-content">
+
+    <!-- Navbar -->
+    <div class="navbar fixed top-0 z-50 bg-base-100 w-full">
+        <div class="flex-1">
+            <a class="btn btn-ghost text-xl font-bold">NikahKuy</a>
+        </div>
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1 hidden md:flex">
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#katalog">Tema</a></li>
+                <li><a href="#harga">Harga</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#footer">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero min-h-screen bg-gradient-to-r from-pink-100 to-purple-200 pt-20">
+        <div class="hero-content text-center">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
+                <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
+                </p>
+                <a href="#katalog" class="btn btn-primary">Lihat Tema</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Tema -->
+    <section id="katalog" class="py-16 bg-white">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold">Pilih Tema Undangan</h2>
+            <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+            <div class="card bg-base-100 shadow-md">
+                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 1" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Tema Elegant</h2>
+                    <p>Kesan mewah dan klasik</p>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-md">
+                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 2" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Tema Floral</h2>
+                    <p>Romantis dan penuh warna</p>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-md">
+                <figure><img src="https://via.placeholder.com/300x180" alt="Tema 3" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Tema Minimalis</h2>
+                    <p>Sederhana dan modern</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harga Paket -->
+    <section id="harga" class="py-16 bg-base-200">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold">Paket Harga</h2>
+            <p class="text-gray-500">Sesuaikan dengan kebutuhan dan budgetmu</p>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center gap-6 max-w-5xl mx-auto px-4">
+            <div class="card bg-white shadow-md">
+                <div class="card-body">
+                    <h2 class="card-title">Paket Basic</h2>
+                    <p>Undangan standar dengan 1 tema</p>
+                    <p class="text-2xl font-bold mt-4">Rp 150.000</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Pesan</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-white shadow-md">
+                <div class="card-body">
+                    <h2 class="card-title">Paket Premium</h2>
+                    <p>Semua tema + musik + RSVP</p>
+                    <p class="text-2xl font-bold mt-4">Rp 300.000</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Pesan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni (Auto Slide + Estetik) -->
+    <section id="testimoni" class="py-16 bg-white">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold">Apa Kata Mereka?</h2>
+            <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
+        </div>
+
+        <div class="carousel-container relative h-72 flex items-center justify-center max-w-xl mx-auto">
+            <div class="carousel w-full h-full relative">
+                <!-- Slide 1 -->
+                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 0s;">
+                    <div
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
+                        <div class="flex flex-col items-center">
+                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
+                                class="w-16 h-16 rounded-full mb-4" />
+                            <p class="italic">“Undangannya cantik dan mudah dikirim ke semua tamu. Sangat puas!”</p>
+                            <p class="font-bold mt-2">– Rina & Dimas</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Slide 2 -->
+                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 5s;">
+                    <div
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
+                        <div class="flex flex-col items-center">
+                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
+                                class="w-16 h-16 rounded-full mb-4" />
+                            <p class="italic">“Simple, elegan, dan banyak pilihan tema. Recommended!”</p>
+                            <p class="font-bold mt-2">– Rina & Dimas</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Slide 3 -->
+
+                <div class="carousel-item w-full absolute left-0 top-0 animate-slide" style="animation-delay: 10s;">
+                    <div
+                        class="card bg-base-100 shadow-md text-center p-6 rounded-xl h-full flex flex-col justify-center">
+                        <div class="flex flex-col items-center">
+                            <img src="https://i.pravatar.cc/100?img=32" alt="avatar"
+                                class="w-16 h-16 rounded-full mb-4" />
+                            <p class="italic">“Bikin undangan digital gak ribet, tinggal kirim link aja.”</p>
+                            <p class="font-bold mt-2">– Rina & Dimas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="footer" class="footer p-10 bg-base-200 text-base-content">
+        <aside>
+            <h3 class="font-bold text-xl">NikahKuy</h3>
+            <p>Undangan digital yang simple, elegan, dan berkesan.</p>
+        </aside>
         <nav>
-            <!-- nav logo box  -->
-            <div class="nav_logo_box">
-                {{-- <img src="{{ asset('assets/images/journey savior.png') }}" alt="Journey Savior"> --}}
-                <h2>Nikah<span class="savior">Kuy</span></h2>
-            </div>
-            <!-- nav menu box  -->
-            <div class="nav_menu_box">
-                <ul>
-                    <li><a id="Home_Menu" href="#">Home</a></li>
-                    <li><a href="{{ route('Home_Menu') }}#katalog">Katalog</a></li>
-                    <li><a href="{{ route('Home_Menu') }}#testimonial">Testimonial</a></li>
-                    <li><a href="#">Kontak Kami</a></li>
-                    <li>
-                        <a href="{{ route('login') }}" class="login-btn">
-                         <i class="fa-solid fa-right-to-bracket"></i> Login
-                         </a>
-                     </li>
-                </ul>
-                <!-- Mobile Devices Responsive Bars  -->
-                <span class="bars"><i class="fa-solid fa-bars"></i></span>
-            </div>
+            <h6 class="footer-title">Navigasi</h6>
+            <a href="#hero" class="link link-hover">Beranda</a>
+            <a href="#katalog" class="link link-hover">Tema</a>
+            <a href="#harga" class="link link-hover">Harga</a>
+            <a href="#testimoni" class="link link-hover">Testimoni</a>
         </nav>
-        <!-- Banner Section  -->
-        <div class="banner">
-            <div class="banner_content_box">
-                <h1>Nikah Kuy</h1>
-                <p>Undangan Digital, Cerita Cinta yang Dibagikan</p>
-            </div>
-            <div class="banner_input_box">
-                <div class="btn find_now"><i class="fa-brands fa-whatsapp"></i><button class="find_btn">Pesan
-                        Sekarang</button></div>
-            </div>
-        </div>
-    </header>
-    <main class="container">
-        <!-- Our Popular Tours Section  -->
-        <section>
-            <div class="popular_tours_parent">
-            </div>
-        </section>
-        <!-- Why Choose Us Section  -->
-        <section id="katalog">
-            <div class="why_choose_us_parent">
-                <div class="content-box">
-                    <h1>Katalog</h1>
-                    <p>Pilihan Tema Undangan Digital</p>
-                </div>
-                <div class="hotels_and_service">
-
-                    <div class="hotel">
-                        <img src="{{ asset('assets/images/undangan 1.png') }}">
-                        <h3>Tema Undangan 1</h3>
-                        <p>Rp. 50.000</p>
-                        <div class="btn find_now">
-                            <button class="find_btn">
-                                Pesan</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Deals and Discount Section  -->
-        <section>
-            <div class="deals_and_discount_parent">
-                <div class="discount_content_box">
-                    <h2>Deals & Discounts</h2>
-                    <p>Unlock incredible savings with Journey Savior's exclusive Deals & Discounts. Elevate your travel
-                        experience
-                        without
-                        breaking the bank. Discover affordable luxury and unforgettable adventures with us</p>
-                </div>
-                <div id="banner_1" class="discount_banner">
-                    <div class="discount_cart" id="discount_cart-1">
-                        <div class="cart_header">
-                            <div>
-                                <img src="{{ asset('images/timer.png') }}" alt=""><span>7 Day / 6 Night</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/persons.png') }}" alt=""><span>Max : 10</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/location.png') }}" alt=""><span>Malaysia</span>
-                            </div>
-                        </div>
-                        <div class="cart_content">
-                            <h2>Grand Canyon</h2>
-                            <p>Visit the awe-inspiring Grand Canyon, a natural wonder that leaves visitors breathless.
-                                Explore the
-                                historic beauty of
-                                Rome's Colosseum and relax on Bali's stunning beaches. Unforgettable adventures await.
-                            </p>
-                            <h3>Price: $1300-$1500</h3>
-                            <button class="btn" id="discount_btn_1">Book Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="banner_2" class="discount_banner">
-                    <div class="discount_cart" id="discount_cart-2">
-                        <div class="cart_header">
-                            <div>
-                                <img src="{{ asset('images/timer.png') }}" alt=""><span>7 Day / 6 Night</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/persons.png') }}" alt=""><span>Max : 10</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/location.png') }}" alt=""><span>Malaysia</span>
-                            </div>
-                        </div>
-                        <div class="cart_content">
-                            <h2>Tour To Satorini</h2>
-                            <p>Immerse yourself in the vibrant culture of Kyoto's ancient temples, witness the majesty
-                                of Egypt's
-                                pyramids. These iconic destinations promise unforgettable travel experiences..</p>
-                            <h3>Price: $1300-$1500</h3>
-                            <button class="btn">Book Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="banner_3" class="discount_banner">
-                    <div class="discount_cart" id="discount_cart-3">
-                        <div class="cart_header">
-                            <div>
-                                <img src="{{ asset('images/timer.png') }}" alt=""><span>7 Day / 6
-                                    Night</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/persons.png') }}" alt=""><span>Max : 10</span>
-                            </div>
-                            <div>
-                                <img src="{{ asset('images/location.png') }}" alt=""><span>Malaysia</span>
-                            </div>
-                        </div>
-                        <div class="cart_content">
-                            <h2>Fiordland</h2>
-                            <p>New Zealand's Fiordland National Park and the
-                                architectural marvels of Petra, these destinations captivate with their unique allure
-                                and rich history.
-                            </p>
-                            <h3>Price: $1300-$1500</h3>
-                            <button class="btn">Book Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn_parent">
-                    <button class="btn">See All Packages</button>
-                </div>
-            </div>
-        </section>
-        <!-- Simple Perfect Place Section  -->
-        <section>
-            <div class="perfect_place_parent">
-                <div class="perfect_place_content_box">
-                    <h1>A Simple Perfect Place To Get Lost</h1>
-                    <p>Bandarban, Bangladesh, epitomizes the phrase 'A Simple Perfect Place To Get Lost.' Nestled amid
-                        lush hills
-                        and tribal
-                        communities, it invites wanderers to discover tranquility, culture, and breathtaking landscapes.
-                    </p>
-                    <ul>
-                        <li>Nestled amid lush hills and tribal
-                            communities, it invites wanderers to discover tranquility, culture, and breathtaking
-                            landscapes</li>
-                        <li>In the heart of Bangladesh lies Bandarban, the epitome of simplicity and serenity, beckoning
-                            adventurers
-                            to get lost in
-                            its natural beauty, tribal charm, and picturesque landscapes</li>
-                    </ul>
-                    <button class="btn">See More</button>
-                </div>
-                <div class="perfect_place_video">
-                    <video src="{{ asset('video/bd_mountain.mp4') }}" poster="images/mountain_banner.png"
-                        controls></video>
-                    <h3>Watch Our Mountain in Bangladesh</h3>
-                </div>
-            </div>
-        </section>
-        <!-- Our Review Section  -->
-        <section id="testimonial">
-            <div class="reviews_parent">
-                <div class="reviews_content_box">
-                    <h2>Testimonial</h2>
-                    <p>Rattings From Customers For Us</p>
-                </div>
-                <div class="review_box_parent">
-                    <div class="reviw_box">
-                        <div class="review_img_box">
-                            <div><img src="{{ asset('images/p1.jpg') }}" alt=""></div>
-                        </div>
-                        <div class="review_content_box">
-                            <h2>Name: Hasnat</h2>
-                            <h3>From: Denmark</h3>
-                            <div>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reviw_box">
-                        <div class="review_img_box">
-                            <div><img src="{{ asset('images/p2.jpg') }}" alt=""></div>
-                        </div>
-                        <div class="review_content_box">
-                            <h2>Name: Hasnat</h2>
-                            <h3>From: Denmark</h3>
-                            <div>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reviw_box">
-                        <div class="review_img_box">
-                            <div><img src="{{ asset('images/p3.jpg') }}" alt=""></div>
-                        </div>
-                        <div class="review_content_box">
-                            <h2>Name: Hasnat</h2>
-                            <h3>From: Denmark</h3>
-                            <div>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reviw_box">
-                        <div class="review_img_box">
-                            <div><img src="{{ asset('images/p4.jpg') }}" alt=""></div>
-                        </div>
-                        <div class="review_content_box">
-                            <h2>Name: Hasnat</h2>
-                            <h3>From: Denmark</h3>
-                            <div>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- Newsletter Section  -->
-        <section>
-            <div class="newsletter_parent">
-                <div class="newsletter_form">
-                    <h2>Newsletter</h2>
-                    <p>Get your daily dose of travel news & tips. Sign up today!</p>
-                    <form action="">
-                        <input type="text" placeholder="Enter Your Name:">
-                        <input type="email" placeholder="Enter Your Email:">
-                        <button class="btn">Subscribe</button>
-                    </form>
-                </div>
-                <div class="newsletter_img_box">
-                    <img src="{{ asset('images/newsletter.png') }}" alt="">
-                    <div class="save_card">
-                        <span>journeysavior.com</span>
-                        <p>Save Up To 70%</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- Footer Section  -->
-    <footer class="">
-        <div class="footer_parent container">
-            <div class="footer_title">
-                <img src="{{ asset('images/journey savior.png') }}" alt="">
-                <h2>Journey <span>Savior</span></h2>
-            </div>
-            <div class="footer_para">
-                <p class="f-p">Journey Savior, your premier traveling platform, is a gateway to seamless adventures.
-                    With
-                    curated
-                    experiences, expert
-                    guidance, and unbeatable prices, we redefine travel, ensuring every journey is memorable and
-                    worry-free.</p>
-            </div>
-        </div>
-        <div class="social_media">
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-        </div>
-        <div class="hr-line"></div>
-        <div class="copy_right">
-            <span>&copy; {{ Date('Y') }}. All Rights Reserved.</span>
-        </div>
+        <nav>
+            <h6 class="footer-title">Kontak</h6>
+            <a class="link link-hover">Email: info@nikahkuy.com</a>
+            <a class="link link-hover">WhatsApp: +62 812-3456-7890</a>
+        </nav>
     </footer>
+
 </body>
 
 </html>
