@@ -399,15 +399,20 @@
 
 
         const navbar = document.getElementById('navbar');
+        const logo = document.querySelector('.btn-ghost span:first-child'); // "Nikah"
+        const logoHighlight = document.querySelector('.btn-ghost span.text-purple-600'); // "Kuy"
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-base-100', 'shadow-md', 'scrolled');
-                navbar.classList.remove('bg-transparent');
-                // jangan utak‑atik text‑white; warna link sudah di‑CSS override
+                navbar.classList.add('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
+                navbar.classList.remove('bg-transparent', 'text-white');
+
+                logo.style.color = '#1f2937'; // text-base-content
             } else {
                 navbar.classList.add('bg-transparent', 'text-white');
-                navbar.classList.remove('bg-base-100', 'shadow-md', 'scrolled', 'text-base-content');
+                navbar.classList.remove('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
+
+                logo.style.color = 'white';
             }
         });
 
