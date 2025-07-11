@@ -294,6 +294,11 @@
         </nav>
     </footer>
 
+    <button id="darkToggle" class="fixed bottom-6 right-6 bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-700 transition z-50">
+    <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
+    </button>
+
+
     <script>
         const carousel = document.getElementById('carousel');
         const track = carousel.querySelector('.flex');
@@ -340,9 +345,34 @@
                 navbar.classList.remove('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
             }
         });
+
+        const toggleBtn = document.getElementById('darkToggle');
+    const icon = document.getElementById('darkIcon');
+    const htmlTag = document.documentElement;
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    let theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    applyTheme(theme);
+
+    function applyTheme(mode) {
+        if (mode === 'dark') {
+            htmlTag.setAttribute('data-theme', 'dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            htmlTag.removeAttribute('data-theme');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Klik togle
+    toggleBtn.addEventListener('click', () => {
+        theme = htmlTag.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+        applyTheme(theme);
+    });
     </script>
-
-
 </body>
-
 </html>
