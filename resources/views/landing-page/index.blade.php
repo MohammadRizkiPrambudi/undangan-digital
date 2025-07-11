@@ -61,7 +61,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            transition: background-color .4s ease, color .4s ease;
         }
 
         #carousel .flex {
@@ -79,9 +79,23 @@
             /* text-base-content (tw gray-800) */
         }
 
-        html[data-theme="dark"] #navbar.scrolled .nav-link {
-            color: #ffffff !important;
+        html[data-theme="dark"] #navbar.scrolled {
+            color: #fff !important;
             /* atau #f3f4f6 */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* Atur gelap-terang di sini */
+            z-index: 1;
+        }
+
+        .hero .hero-content {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
@@ -104,10 +118,12 @@
             </ul>
 
             <div class="flex gap-2 ml-2">
-                <a href="{{ route('login') }}" class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700">
+                <a href="{{ route('login') }}"
+                    class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700 border-none">
                     <i class="fa-solid fa-right-to-bracket mr-1 text-sm"></i> Login
                 </a>
-                <a href="{{ route('register') }}" class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700">
+                <a href="{{ route('register') }}"
+                    class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700 border-none">
                     <i class="fa-solid fa-user-plus mr-1 text-sm"></i> Register
                 </a>
 
@@ -116,15 +132,16 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero min-h-screen pt-20 bg-cover opacity-70 bg-center"
+    <section id="hero" class="hero min-h-screen pt-20 bg-cover bg-center relative"
         style="background-image: url('/images/hero.jpg');">
-        <div class="hero-content text-center text-white bg-black/50 backdrop-blur-sm rounded-xl p-8">
+        <div class="hero-content text-center text-white bg-black/50 shadow-lg backdrop-blur-sm rounded-xl p-8">
             <div class="max-w-2xl">
                 <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
                 <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
                 </p>
-                <a href="#katalog" class="btn bg-purple-600 text-white"> <i
-                        class=" fa-solid fa-brands fa-whatsapp text-sm"></i>Pesan Sekarang</a>
+                <a href="#katalog" class="btn bg-purple-600 text-white border-none">
+                    <i class="fa-solid fa-brands fa-whatsapp text-sm"></i> Pesan Sekarang
+                </a>
             </div>
         </div>
     </section>
@@ -132,67 +149,107 @@
     <!-- Katalog Tema -->
     <section id="katalog" class="py-16 bg-white">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-sky-400">Pilih Tema Undangan</h2>
+            <h2 class="text-3xl font-bold text-purple-600">Pilih Tema Undangan</h2>
             <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 1" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Tema Elegant</h2>
                     <p>Kesan mewah dan klasik</p>
+                    <div class="card-actions">
+                        <a href="" target="_blank"
+                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
+                            <i class="fa-solid fa-eye"></i> Preview
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 2" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
                 <div class="card-body">
-                    <h2 class="card-title">Tema Floral</h2>
-                    <p>Romantis dan penuh warna</p>
+                    <h2 class="card-title">Tema Elegant</h2>
+                    <p>Kesan mewah dan klasik</p>
+                    <div class="card-actions">
+                        <a href="" target="_blank"
+                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
+                            <i class="fa-solid fa-eye"></i> Preview
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema 3" /></figure>
+                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
                 <div class="card-body">
-                    <h2 class="card-title">Tema Minimalis</h2>
-                    <p>Sederhana dan modern</p>
+                    <h2 class="card-title">Tema Elegant</h2>
+                    <p>Kesan mewah dan klasik</p>
+                    <div class="card-actions">
+                        <a href="" target="_blank"
+                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700">
+                            <i class="fa-solid fa-eye"></i> Preview
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Harga Paket -->
+
+    <!-- Harga Paket -->
     <section id="harga" class="py-16 bg-base-200">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-sky-400">Paket Harga</h2>
+            <h2 class="text-3xl font-bold text-purple-600">Paket Harga</h2>
             <p class="text-gray-500">Sesuaikan dengan kebutuhan dan budgetmu</p>
         </div>
         <div class="flex flex-col md:flex-row justify-center gap-6 max-w-5xl mx-auto px-4">
-            <div class="card bg-white shadow-md">
+            <!-- Paket Basic -->
+            <div class="card bg-white shadow-md w-full md:w-1/2">
                 <div class="card-body">
-                    <h2 class="card-title">Paket Basic</h2>
-                    <p>Undangan standar dengan 1 tema</p>
-                    <p class="text-2xl font-bold mt-4">Rp 150.000</p>
+                    <h2 class="card-title text-xl">Paket Basic</h2>
+                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                        <li>1 pilihan tema undangan</li>
+                        <li>Desain responsive (bisa dibuka di HP & PC)</li>
+                        <li>Tampilan galeri foto</li>
+                        <li>Peta lokasi acara (Google Maps)</li>
+                        <li>Link undangan yang mudah dibagikan</li>
+                    </ul>
+                    <p class="text-2xl font-bold mt-4 text-purple-600">Rp 150.000</p>
                     <div class="card-actions justify-end">
-                        <button class="btn bg-purple-600 text-white">Pesan</button>
+                        <button class="btn bg-purple-600 text-white normal-case"> <i
+                                class="fa-solid fa-cart-shopping"></i> Pesan</button>
                     </div>
                 </div>
             </div>
-            <div class="card bg-white shadow-md">
+
+            <!-- Paket Premium -->
+            <div class="card bg-white shadow-md w-full md:w-1/2">
                 <div class="card-body">
-                    <h2 class="card-title">Paket Premium</h2>
-                    <p>Semua tema + musik + RSVP</p>
-                    <p class="text-2xl font-bold mt-4">Rp 300.000</p>
+                    <h2 class="card-title text-xl">Paket Premium</h2>
+                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                        <li>Semua tema undangan (bebas pilih)</li>
+                        <li>Desain responsive (HP & PC)</li>
+                        <li>Galeri + Musik latar + Quotes</li>
+                        <li>Fitur RSVP (konfirmasi kehadiran)</li>
+                        <li>Hitung mundur hari H & Google Maps</li>
+                        <li>Kustomisasi nama tamu otomatis</li>
+                    </ul>
+                    <p class="text-2xl font-bold mt-4 text-purple-600">Rp 300.000</p>
                     <div class="card-actions justify-end">
-                        <button class="btn bg-purple-600 text-white">Pesan</button>
+                        <button class="btn bg-purple-600 text-white normal-case"> <i
+                                class="fa-solid fa-cart-shopping"></i> Pesan</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+    {{-- testimoni --}}
     <section id="testimoni" class="py-16 bg-white">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-sky-400">Apa Kata Mereka?</h2>
+            <h2 class="text-3xl font-bold text-purple-600">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
         </div>
 
@@ -251,7 +308,7 @@
     <!-- Section Kontak -->
     <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-12">
         <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-sky-400">Hubungi Kami</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-purple-600">Hubungi Kami</h2>
             <p class="text-gray-500 text-sm md:text-base">Punya pertanyaan atau mau custom undangan? Kirim pesanmu di
                 sini!</p>
         </div>
@@ -272,7 +329,7 @@
                         <textarea class="textarea textarea-bordered w-full text-sm" rows="3" placeholder="Tulis pesan kamu di sini..."></textarea>
                     </div>
                     <div class="text-right">
-                        <button class="btn bg-purple-600 text-white btn-sm md:btn-md">Kirim Pesan</button>
+                        <button class="btn bg-purple-600 text-white btn-sm md:btn-md border-none">Kirim Pesan</button>
                     </div>
                 </form>
             </div>
@@ -344,11 +401,12 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
-                navbar.classList.remove('bg-transparent', 'text-white');
+                navbar.classList.add('bg-base-100', 'shadow-md', 'scrolled');
+                navbar.classList.remove('bg-transparent');
+                // jangan utak‑atik text‑white; warna link sudah di‑CSS override
             } else {
                 navbar.classList.add('bg-transparent', 'text-white');
-                navbar.classList.remove('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
+                navbar.classList.remove('bg-base-100', 'shadow-md', 'scrolled', 'text-base-content');
             }
         });
 
