@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('theme_id')->constrained()->onDelete('cascade');
+            $table->foreignId('package_id')->constrained()->onDelete('cascade');
+            $table->foreignId('theme_id')->nullable()->constrained()->onDelete('set null');
             $table->string('order_code')->unique();
-            $table->string('event_name');
-            $table->date('event_date');
-            $table->string('event_location');
             $table->text('notes')->nullable(); // catatan tambahan
             $table->enum('status', ['pending', 'paid', 'processing', 'completed', 'cancelled'])->default('pending');
             $table->timestamps();
