@@ -9,95 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @keyframes slide {
+    <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
 
-            0%,
-            30% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-
-            33.33%,
-            100% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-        }
-
-        .carousel-item {
-            opacity: 0;
-            width: 100%;
-            animation: slide 15s infinite;
-        }
-
-        .carousel-item:nth-child(2) {
-            animation-delay: 5s;
-        }
-
-        .carousel-item:nth-child(3) {
-            animation-delay: 10s;
-        }
-
-        .carousel-container {
-            position: relative;
-            height: 320px;
-            /* Tinggi tetap agar semua kartu sejajar */
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        html {
-            transition: background-color .4s ease, color .4s ease;
-        }
-
-        #carousel .flex {
-            transition: transform 0.8s ease-in-out;
-            will-change: transform;
-        }
-
-        .nav-link {
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        .scrolled .nav-link {
-            color: #1f2937;
-            /* text-base-content (tw gray-800) */
-        }
-
-        html[data-theme="dark"] #navbar.scrolled {
-            color: #fff !important;
-            /* atau #f3f4f6 */
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            /* Atur gelap-terang di sini */
-            z-index: 1;
-        }
-
-        .hero .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-    </style>
 </head>
 
 <body class="bg-base-100 text-base-content">
@@ -106,7 +19,10 @@
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
 
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl font-bold"><span>Nikah</span><span class="text-purple-500">Kuy</span></a>
+            <a class="btn btn-ghost text-xl font-bold flex items-center gap-2">
+                <img src="/images/logokontak.png" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                <span>Nikah</span><span class="text-purple-500">Kuy</span>
+            </a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 hidden md:flex">
@@ -147,7 +63,7 @@
     </section>
 
     <!-- Katalog Tema -->
-    <section id="katalog" class="py-16 bg-white">
+    <section id="katalog" class="py-16 bg-amber-50">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-purple-600">Pilih Tema Undangan</h2>
             <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
@@ -194,8 +110,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Harga Paket -->
 
     <!-- Harga Paket -->
     <section id="harga" class="py-16 bg-base-200">
@@ -247,7 +161,7 @@
 
 
     {{-- testimoni --}}
-    <section id="testimoni" class="py-16 bg-white">
+    <section id="testimoni" class="py-16 bg-blue-50">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-purple-600">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
@@ -307,43 +221,43 @@
 
     <!-- Section Kontak -->
     <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-16">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <!-- Form Kontak -->
-            <div>
-                <h2 class="text-3xl font-bold text-purple-600 mb-6 text-center">Hubungi Kami</h2>
-                <p class="text-gray-700 mb-8 text-sm md:text-base leading-relaxed">
-                    Punya pertanyaan atau mau konsultasi undangan digital?  
-                    Kirimkan pesanmu lewat form berikut ini.
-                </p>
-                <form class="space-y-5 shadow-lg p-6 rounded-lg">
-                    <div>
-                        <label class="block mb-2 text-sm font-semibold text-gray-700">Nama Lengkap</label>
-                        <input type="text" placeholder="Nama Kamu"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-semibold text-gray-700">Email</label>
-                        <input type="email" placeholder="email@example.com"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-semibold text-gray-700">Pesan</label>
-                        <textarea rows="4" placeholder="Tulis pesan kamu di sini..."
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"></textarea>
-                    </div>
-                    <button
-                        class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold w-full">
-                        Kirim Pesan
-                    </button>
-                </form>
-            </div>
-            <div class="flex justify-center md:justify-end">
-                <img src="/images/logokontak.png" alt="Logo NikahKuy" class="w-64 md:w-80 h-auto">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <!-- Form Kontak -->
+                <div>
+                    <h2 class="text-3xl font-bold text-purple-600 mb-6 text-center">Hubungi Kami</h2>
+                    <p class="text-gray-700 mb-8 text-sm md:text-base leading-relaxed">
+                        Punya pertanyaan atau mau konsultasi undangan digital?
+                        Kirimkan pesanmu lewat form berikut ini.
+                    </p>
+                    <form class="space-y-5 shadow-lg p-6 rounded-lg">
+                        <div>
+                            <label class="block mb-2 text-sm font-semibold text-gray-700">Nama Lengkap</label>
+                            <input type="text" placeholder="Nama Kamu"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-sm font-semibold text-gray-700">Email</label>
+                            <input type="email" placeholder="email@example.com"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-sm font-semibold text-gray-700">Pesan</label>
+                            <textarea rows="4" placeholder="Tulis pesan kamu di sini..."
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"></textarea>
+                        </div>
+                        <button
+                            class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold w-full">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+                <div class="flex justify-center md:justify-end">
+                    <img src="/images/logokontak.png" alt="Logo NikahKuy" class="w-64 md:w-80 h-auto">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Footer -->
@@ -371,89 +285,8 @@
         class="fixed bottom-6 right-6 bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-700 transition z-50">
         <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
     </button>
+    <script src="{{ asset('assets/js/myjs.js') }}"></script>
 
-
-    <script>
-        const carousel = document.getElementById('carousel');
-        const track = carousel.querySelector('.flex');
-        const items = track.querySelectorAll('.w-80');
-        let itemsPerSlide = getItemsPerSlide();
-
-        function getItemsPerSlide() {
-            return window.innerWidth < 768 ? 1 : 3; // 1 item di HP, 3 item di desktop
-        }
-
-        function getItemWidth() {
-            return items[0].offsetWidth + 32; // w-80 (320px) + padding 2*16px = 352px
-        }
-
-        let currentIndex = 0;
-
-        function slideCarousel() {
-            const maxIndex = Math.ceil(items.length / itemsPerSlide) - 1;
-            currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
-
-            const offset = currentIndex * getItemWidth() * itemsPerSlide;
-            track.style.transform = `translateX(-${offset}px)`;
-            track.style.transition = 'transform 0.8s ease-in-out';
-        }
-
-        // Update itemsPerSlide on resize
-        window.addEventListener('resize', () => {
-            itemsPerSlide = getItemsPerSlide();
-            currentIndex = 0; // reset ke awal
-            track.style.transform = `translateX(0px)`;
-        });
-
-        setInterval(slideCarousel, 3000);
-
-
-        const navbar = document.getElementById('navbar');
-        const logo = document.querySelector('.btn-ghost span:first-child'); // "Nikah"
-        const logoHighlight = document.querySelector('.btn-ghost span.text-purple-600'); // "Kuy"
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
-                navbar.classList.remove('bg-transparent', 'text-white');
-
-                logo.style.color = '#1f2937'; // text-base-content
-            } else {
-                navbar.classList.add('bg-transparent', 'text-white');
-                navbar.classList.remove('bg-base-100', 'text-base-content', 'shadow-md', 'scrolled');
-
-                logo.style.color = 'white';
-            }
-        });
-
-        const toggleBtn = document.getElementById('darkToggle');
-        const icon = document.getElementById('darkIcon');
-        const htmlTag = document.documentElement;
-
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        let theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-        applyTheme(theme);
-
-        function applyTheme(mode) {
-            if (mode === 'dark') {
-                htmlTag.setAttribute('data-theme', 'dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                htmlTag.removeAttribute('data-theme');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-
-        // Klik togle
-        toggleBtn.addEventListener('click', () => {
-            theme = htmlTag.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', theme);
-            applyTheme(theme);
-        });
-    </script>
 </body>
 
 </html>

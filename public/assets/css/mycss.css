@@ -1,0 +1,86 @@
+@keyframes slide {
+    0%,
+    30% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    33.33%,
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.carousel-item {
+    opacity: 0;
+    width: 100%;
+    animation: slide 15s infinite;
+}
+
+.carousel-item:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.carousel-item:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.carousel-container {
+    position: relative;
+    height: 320px;
+    /* Tinggi tetap agar semua kartu sejajar */
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#carousel .flex {
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
+}
+
+.nav-link {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.scrolled .nav-link {
+    color: #1f2937;
+    /* text-base-content (tw gray-800) */
+}
+
+html[data-theme="dark"] #navbar.scrolled .nav-link,
+html[data-theme="dark"] #navbar.scrolled .logo-text span:first-child {
+    color: white !important;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Atur gelap-terang di sini */
+    z-index: 1;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
