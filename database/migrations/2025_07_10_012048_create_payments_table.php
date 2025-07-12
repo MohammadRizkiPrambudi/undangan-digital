@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('payment_method'); // midtrans, manual_transfer
             $table->decimal('amount', 10, 2);
             $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
-            $table->string('payment_method')->nullable(); // bukti pembayaran jika manual
+            $table->string('payment_proof')->nullable(); // bukti pembayaran jika manual
             $table->timestamps();
         });
     }
