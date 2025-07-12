@@ -159,7 +159,6 @@
         </div>
     </section>
 
-
     {{-- testimoni --}}
     <section id="testimoni" class="py-16 bg-blue-50">
         <div class="text-center mb-10">
