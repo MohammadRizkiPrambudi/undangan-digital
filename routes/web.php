@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InvitationController;
@@ -31,10 +32,12 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 // web.php
 Route::middleware(['auth'])->group(function () {
     Route::resource('orders', OrderController::class);
+    Route::resource('packages', PackageController::class);
     Route::get('orders/{order}/payment', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('payments.store');
 
-    Route::prefix('admin')->middleware('role:admin')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('packages', PackageController::class);
         Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
         Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     });

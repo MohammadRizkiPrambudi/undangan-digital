@@ -11,7 +11,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return view();
+        return view('pages.packages.index');
     }
 
     /**
