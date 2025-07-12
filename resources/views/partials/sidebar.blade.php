@@ -27,7 +27,7 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Management User</span>
+                <span class="menu-title">Manag User</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">

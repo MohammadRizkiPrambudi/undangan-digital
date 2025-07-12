@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +27,21 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
+
+// web.php
+Route::middleware(['auth'])->group(function () {
+    Route::resource('orders', OrderController::class);
+    Route::get('orders/{order}/payment', [PaymentController::class, 'create'])->name('payments.create');
+    Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('payments.store');
+
+    Route::prefix('admin')->middleware('role:admin')->group(function () {
+        Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
+        Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    });
+
+    Route::get('invitations/{order}/edit', [InvitationController::class, 'edit'])->name('invitations.edit');
+    Route::post('invitations/{order}/update', [InvitationController::class, 'update'])->name('invitations.update');
+});
 
 Route::get('/dashboard/index', function () {
     return view('dashboard.index');
