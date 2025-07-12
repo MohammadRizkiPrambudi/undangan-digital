@@ -306,35 +306,45 @@
     </section>
 
     <!-- Section Kontak -->
-    <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-12">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-purple-600">Hubungi Kami</h2>
-            <p class="text-gray-500 text-sm md:text-base">Punya pertanyaan atau mau custom undangan? Kirim pesanmu di
-                sini!</p>
-        </div>
-        <div class="max-w-xl mx-auto px-4">
-            <div class="card bg-white shadow-md p-6 md:p-8">
-                <form>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-semibold text-gray-600">Nama Lengkap</label>
-                        <input type="text" placeholder="Nama Kamu" class="input input-bordered w-full text-sm" />
+    <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <!-- Form Kontak -->
+            <div>
+                <h2 class="text-3xl font-bold text-purple-600 mb-6 text-center">Hubungi Kami</h2>
+                <p class="text-gray-700 mb-8 text-sm md:text-base leading-relaxed">
+                    Punya pertanyaan atau mau konsultasi undangan digital?  
+                    Kirimkan pesanmu lewat form berikut ini.
+                </p>
+                <form class="space-y-5 shadow-lg p-6 rounded-lg">
+                    <div>
+                        <label class="block mb-2 text-sm font-semibold text-gray-700">Nama Lengkap</label>
+                        <input type="text" placeholder="Nama Kamu"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
                     </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-semibold text-gray-600">Email</label>
+                    <div>
+                        <label class="block mb-2 text-sm font-semibold text-gray-700">Email</label>
                         <input type="email" placeholder="email@example.com"
-                            class="input input-bordered w-full text-sm" />
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
                     </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-semibold text-gray-600">Pesan</label>
-                        <textarea class="textarea textarea-bordered w-full text-sm" rows="3" placeholder="Tulis pesan kamu di sini..."></textarea>
+                    <div>
+                        <label class="block mb-2 text-sm font-semibold text-gray-700">Pesan</label>
+                        <textarea rows="4" placeholder="Tulis pesan kamu di sini..."
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"></textarea>
                     </div>
-                    <div class="text-right">
-                        <button class="btn bg-purple-600 text-white btn-sm md:btn-md border-none">Kirim Pesan</button>
-                    </div>
+                    <button
+                        class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold w-full">
+                        Kirim Pesan
+                    </button>
                 </form>
             </div>
+            <div class="flex justify-center md:justify-end">
+                <img src="/images/logokontak.png" alt="Logo NikahKuy" class="w-64 md:w-80 h-auto">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer id="footer" class="footer p-10 bg-base-200 text-base-content">
