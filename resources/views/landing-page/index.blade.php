@@ -10,11 +10,13 @@
     <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
-
+    <style>
+         html {
+         scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body class="bg-base-100 text-base-content">
-
     <!-- Navbar -->
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
 
@@ -258,7 +260,6 @@
         </div>
     </section>
 
-
     <!-- Footer -->
     <footer id="footer" class="footer p-10 bg-base-200 text-base-content">
         <aside>
@@ -285,7 +286,5 @@
         <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
     </button>
     <script src="{{ asset('assets/js/myjs.js') }}"></script>
-
 </body>
-
 </html>
