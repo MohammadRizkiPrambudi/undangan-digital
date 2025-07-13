@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Invitation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class InvitationController extends Controller
@@ -58,14 +60,14 @@ class InvitationController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'slug'            => 'required|unique:invitations,slug,' . optional($order->invitation)->id,
+            'slug' => 'required|unique:invitations,slug,' . optional($order->invitation)->id,
             'invitation_data' => 'required|array',
         ]);
 
         $invitation = Invitation::updateOrCreate(
             ['order_id' => $order->id],
             [
-                'slug'            => $request->slug,
+                'slug' => $request->slug,
                 'invitation_data' => $request->invitation_data,
             ]
         );
