@@ -11,15 +11,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
     <style>
-         html {
-         scroll-behavior: smooth;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
+    .nav-link {
+        position: relative;
+        padding-bottom: 4px;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background-color: #9333ea; /* Warna ungu Tailwind: purple-600 */
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
     </style>
 </head>
 <body class="bg-base-100 text-base-content">
     <!-- Navbar -->
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
-
         <div class="flex-1">
             <a class="btn btn-ghost text-xl font-bold flex items-center gap-2">
                 <img src="/images/logokontak.png" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain" />
