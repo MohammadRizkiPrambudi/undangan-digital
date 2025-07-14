@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InvitationController;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::resource('packages', PackageController::class);
+        Route::resource('themes', ThemeController::class);
         Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
         Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     });

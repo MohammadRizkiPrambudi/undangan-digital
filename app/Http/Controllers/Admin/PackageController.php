@@ -32,19 +32,23 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'features' => 'required|array',
-            'themes' => 'nullable|array',
+            'name'     => 'required',
+            'price'    => 'required|numeric',
+            'features' => 'required',
+            'themes'   => 'nullable|array',
         ]);
+
+        $features = preg_split('/\r\n|\r|\n/', $request->features); // pecah per baris
 
         $package = Package::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'features' => $request->features,
+            'name'     => $request->name,
+            'price'    => $request->price,
+            'features' => array_filter($features),
         ]);
 
-        $package->themes()->sync($request->themes);
+        if ($request->has('themes')) {
+            $package->themes()->sync($request->themes);
+        }
 
         return redirect()->route('packages.index')->with('success', 'Paket berhasil ditambahkan.');
     }
@@ -63,7 +67,7 @@ class PackageController extends Controller
     public function edit(string $id)
     {
         $package = Package::with('themes')->findOrFail($id);
-        $themes = Theme::all();
+        $themes  = Theme::all();
         return view('pages.packages.edit', compact('package', 'themes'));
     }
 
@@ -73,20 +77,21 @@ class PackageController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric',
+            'name'     => 'required',
+            'price'    => 'required|numeric',
             'features' => 'required|array',
-            'themes' => 'nullable|array',
+            'themes'   => 'nullable|array',
         ]);
 
         $package = Package::findOrFail($id);
+
         $package->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'features' => $request->features,
+            'name'     => $request->name,
+            'price'    => $request->price,
+            'features' => array_filter($request->features),
         ]);
 
-        $package->themes()->sync($request->themes);
+        $package->themes()->sync($request->themes ?? []);
 
         return redirect()->route('packages.index')->with('success', 'Paket berhasil diperbarui.');
     }
@@ -97,7 +102,9 @@ class PackageController extends Controller
     public function destroy(string $id)
     {
         $package = Package::findOrFail($id);
+        $package->themes()->detach();
         $package->delete();
+
         return redirect()->route('packages.index')->with('success', 'Paket berhasil dihapus.');
     }
 }

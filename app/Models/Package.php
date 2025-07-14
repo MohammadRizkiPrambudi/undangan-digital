@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Package extends Model
 {
@@ -22,6 +23,15 @@ class Package extends Model
     public function themes()
     {
         return $this->belongsToMany(Theme::class);
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($package) {
+            if (empty($package->slug)) {
+                $package->slug = Str::slug($package->name);
+            }
+        });
     }
 
 }

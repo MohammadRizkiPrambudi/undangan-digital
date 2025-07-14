@@ -6,16 +6,17 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('themes.index') }}">
+                <i class="icon-layers menu-icon"></i>
+                <span class="menu-title">Theme</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('packages.index') }}">
                 <i class="icon-briefcase menu-icon"></i>
                 <span class="menu-title">Packages</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="icon-layers menu-icon"></i>
-                <span class="menu-title">Theme</span>
             </a>
         </li>
         <li class="nav-item">
