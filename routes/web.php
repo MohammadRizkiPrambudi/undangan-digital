@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ThemeController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -20,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing-page.index');
-})->name('Home_Menu');
+Route::get('/', [FrontendController::class, 'index'])->name('frontend.home');
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -32,13 +34,17 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // web.php
 Route::middleware(['auth'])->group(function () {
-    Route::resource('orders', OrderController::class);
+    Route::get('/order/{package}', [OrderController::class, 'create'])->name('order.create');
     Route::resource('packages', PackageController::class);
     Route::get('orders/{order}/payment', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('payments.store');
 
     Route::prefix('admin')->group(function () {
         Route::resource('packages', PackageController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('permissions', PermissionController::class);
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
         Route::resource('themes', ThemeController::class);
         Route::get('orders', [OrderController::class, 'index'])->name('admin.orders.index');
         Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');

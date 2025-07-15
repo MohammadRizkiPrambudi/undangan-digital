@@ -8,7 +8,7 @@ class Theme extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'thumbnail', 'price', 'description'];
+    protected $fillable = ['name', 'slug', 'thumbnail', 'price', 'description', 'preview_url'];
 
     public function orders()
     {

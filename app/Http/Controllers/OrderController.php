@@ -3,10 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Package;
-use App\Models\Theme;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -22,11 +21,12 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Package $package)
     {
-        $packages = Package::all();
-        $themes = Theme::all();
-        return view('orders.create', compact('packages', 'themes'));
+        // $packages = Package::all();
+        // $themes   = Theme::all();
+        // return view('orders.create', compact('packages', 'themes'));
+        return view('frontend.order.create', compact('package'));
     }
 
     /**
@@ -36,15 +36,15 @@ class OrderController extends Controller
     {
         $request->validate([
             'package_id' => 'required|exists:packages,id',
-            'theme_id' => 'nullable|exists:themes,id',
+            'theme_id'   => 'nullable|exists:themes,id',
         ]);
 
         $order = Order::create([
-            'user_id' => Auth::id(),
+            'user_id'    => Auth::id(),
             'package_id' => $request->package_id,
-            'theme_id' => $request->theme_id,
+            'theme_id'   => $request->theme_id,
             'order_code' => strtoupper(Str::random(10)),
-            'status' => 'pending',
+            'status'     => 'pending',
         ]);
 
         return redirect()->route('orders.index')->with('success', 'Pesanan berhasil dibuat.');

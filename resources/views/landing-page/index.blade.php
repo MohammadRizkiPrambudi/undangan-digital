@@ -11,30 +11,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
     <style>
-    html {
-        scroll-behavior: smooth;
-    }
-    .nav-link {
-        position: relative;
-        padding-bottom: 4px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0%;
-        height: 2px;
-        background-color: #9333ea; /* Warna ungu Tailwind: purple-600 */
-        transition: width 0.3s ease-in-out;
-    }
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
 
-    .nav-link:hover::after {
-        width: 100%;
-    }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #9333ea;
+            /* Warna ungu Tailwind: purple-600 */
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
+
 <body class="bg-base-100 text-base-content">
     <!-- Navbar -->
     <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
@@ -89,45 +92,26 @@
             <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
-            <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Tema Elegant</h2>
-                    <p>Kesan mewah dan klasik</p>
-                    <div class="card-actions">
-                        <a href="" target="_blank"
-                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
-                            <i class="fa-solid fa-eye"></i> Preview
-                        </a>
+            @foreach ($themes as $theme)
+                <div class="card bg-base-100 shadow-md">
+                    <figure> <img src="{{ asset('storage/' . $theme->thumbnail) }}" alt="{{ $theme->name }}" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $theme->name }}</h2>
+                        <p>{{ $theme->description }}</p>
+                        <div class="card-actions">
+                            @if (!empty($theme->preview_url))
+                                <a href="{{ $theme->preview_url }}" target="_blank"
+                                    class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
+                                    <i class="fa-solid fa-eye"></i> Preview
+                                </a>
+                            @else
+                                <span class="text-xs text-gray-400 italic">Preview belum tersedia</span>
+                            @endif
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Tema Elegant</h2>
-                    <p>Kesan mewah dan klasik</p>
-                    <div class="card-actions">
-                        <a href="" target="_blank"
-                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
-                            <i class="fa-solid fa-eye"></i> Preview
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-base-100 shadow-md">
-                <figure><img src="{{ asset('assets/images/undangan 1.png') }}" alt="Tema Elegant" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Tema Elegant</h2>
-                    <p>Kesan mewah dan klasik</p>
-                    <div class="card-actions">
-                        <a href="" target="_blank"
-                            class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700">
-                            <i class="fa-solid fa-eye"></i> Preview
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -138,44 +122,33 @@
             <p class="text-gray-500">Sesuaikan dengan kebutuhan dan budgetmu</p>
         </div>
         <div class="flex flex-col md:flex-row justify-center gap-6 max-w-5xl mx-auto px-4">
-            <!-- Paket Basic -->
-            <div class="card bg-white shadow-md w-full md:w-1/2">
-                <div class="card-body">
-                    <h2 class="card-title text-xl">Paket Basic</h2>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
-                        <li>1 pilihan tema undangan</li>
-                        <li>Desain responsive (bisa dibuka di HP & PC)</li>
-                        <li>Tampilan galeri foto</li>
-                        <li>Peta lokasi acara (Google Maps)</li>
-                        <li>Link undangan yang mudah dibagikan</li>
-                    </ul>
-                    <p class="text-2xl font-bold mt-4 text-purple-600">Rp 150.000</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-purple-600 text-white normal-case"> <i
-                                class="fa-solid fa-cart-shopping"></i> Pesan</button>
+            <!-- Paket -->
+            @foreach ($packages as $package)
+                <div class="card bg-white shadow-md w-full md:w-1/2">
+                    <div class="card-body">
+                        <h2 class="card-title text-xl">Paket {{ $package->name }}</h2>
+                        <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                            @foreach ($package->features ?? [] as $feature)
+                                <li>{{ $feature }}</li>
+                            @endforeach
+                        </ul>
+                        <p class="text-2xl font-bold mt-4 text-purple-600">Rp
+                            {{ number_format($package->price, 0, ',', '.') }}</p>
+                        <div class="card-actions justify-end">
+                            @auth
+                                <a href="{{ route('order.create', $package) }}"
+                                    class="btn bg-purple-600 text-white normal-case">
+                                    <i class="fa-solid fa-cart-shopping"></i> Pesan
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn bg-gray-400 text-white normal-case">
+                                    <i class="fa-solid fa-lock"></i> Login untuk Pesan
+                                </a>
+                            @endauth
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Paket Premium -->
-            <div class="card bg-white shadow-md w-full md:w-1/2">
-                <div class="card-body">
-                    <h2 class="card-title text-xl">Paket Premium</h2>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
-                        <li>Semua tema undangan (bebas pilih)</li>
-                        <li>Desain responsive (HP & PC)</li>
-                        <li>Galeri + Musik latar + Quotes</li>
-                        <li>Fitur RSVP (konfirmasi kehadiran)</li>
-                        <li>Hitung mundur hari H & Google Maps</li>
-                        <li>Kustomisasi nama tamu otomatis</li>
-                    </ul>
-                    <p class="text-2xl font-bold mt-4 text-purple-600">Rp 300.000</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-purple-600 text-white normal-case"> <i
-                                class="fa-solid fa-cart-shopping"></i> Pesan</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -305,4 +278,5 @@
     </button>
     <script src="{{ asset('assets/js/myjs.js') }}"></script>
 </body>
+
 </html>
