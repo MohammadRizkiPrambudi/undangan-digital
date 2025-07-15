@@ -30,3 +30,6 @@ php artisan serve
 
 **Preview dashboard**
 ![dashboard](image.png)
+
+**Preview Frontend**
+![frontend](image-1.png)
