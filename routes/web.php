@@ -80,14 +80,6 @@ Route::get('/icons', function () {
     return view('pages.icons.index');
 });
 
-// Route::get('/login', function () {
-//     return view('pages.user-pages.login.index');
-// });
-
-// Route::get('/register', function () {
-//     return view('pages.user-pages.register.index');
-// });
-
 Route::get('/erro404', function () {
     return view('pages.error-pages.404.index');
 });
