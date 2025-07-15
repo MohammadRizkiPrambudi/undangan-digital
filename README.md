@@ -29,7 +29,7 @@ php artisan serve
 ```
 
 **Preview dashboard**
-![dashboard](image.png)
+![dashboard](image-2.png)
 
 **Preview Frontend**
 ![frontend](image-1.png)
