@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nikah Kuy</title>
+    {{-- DaisyUI dan Tailwind CSS dari CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    {{-- Font Awesome dari CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {{-- Jika Anda memiliki CSS kustom, pastikan ini tidak dikomentari --}}
     <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="bg-base-100 text-base-content">
-    <!-- Navbar -->
-    <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300 bg-transparent text-white">
+    <div id="navbar" class="navbar fixed top-0 z-50 w-full transition-all duration-300">
         <div class="flex-1">
             <a class="btn btn-ghost text-xl font-bold flex items-center gap-2">
-                <img src="/images/logokontak.png" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                <img src="/images/logokontak.png" alt="Logo NikahKuy" class="w-8 h-8 md:w-10 md:h-10 object-contain" />
                 <span>Nikah</span><span class="text-purple-500">Kuy</span>
             </a>
         </div>
@@ -27,15 +29,17 @@
                 <li><a href="#katalog" class="nav-link">Tema</a></li>
                 <li><a href="#harga" class="nav-link">Harga</a></li>
                 <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
-                <li><a href="#footer" class="nav-link">Kontak</a></li>
+                <li><a href="#kontak" class="nav-link">Kontak</a></li>
             </ul>
             @auth
                 <div class="dropdown dropdown-end">
-                    <button class="btn btn-xs bg-purple-600 text-white dropdown-toggle" type="button">
+                    <label tabindex="0" class="btn btn-sm btn-primary normal-case">
                         <i class="fa-solid fa-user mr-1"></i> {{ Auth::user()->name }}
-                    </button>
-                    <ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
-                        <li><a href="{{ route('pembeli.dashboard') }}">Dashboard</a></li>
+                    </label>
+                    <ul tabindex="0"
+                        class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2 normal-case">
+                        <li><a href="">Dashboard</a></li>
+                        {{-- Sesuaikan dengan route dashboard Anda --}}
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -46,15 +50,13 @@
                 </div>
             @else
                 <div class="flex gap-2 ml-2">
-                    <a href="{{ route('login') }}" class="btn btn-xs bg-purple-600 text-white border-none">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-xs bg-purple-600 text-white border-none">Register</a>
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-primary normal-case">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-sm btn-primary normal-case">Register</a>
                 </div>
             @endauth
-
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section id="hero" class="hero min-h-screen pt-20 bg-cover bg-center relative"
         style="background-image: url('/images/hero.jpg');">
         <div class="hero-content text-center text-white bg-black/50 shadow-lg backdrop-blur-sm rounded-xl p-8">
@@ -62,35 +64,35 @@
                 <h1 class="text-5xl font-bold">Undangan Digital Pernikahan</h1>
                 <p class="py-6">Buat momen sakralmu lebih berkesan dan praktis dengan undangan digital dari NikahKuy.
                 </p>
-                <a href="#katalog" class="btn bg-purple-600 text-white border-none">
-                    <i class="fa-solid fa-brands fa-whatsapp text-sm"></i> Pesan Sekarang
+                <a href="#katalog" class="btn btn-primary">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Pesan Sekarang
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Katalog Tema -->
-    <section id="katalog" class="py-16">
+    <section id="katalog" class="py-16 bg-base-200"> {{-- Light mode: bg-base-200, Dark mode: custom CSS --}}
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-purple-600">Pilih Tema Undangan</h2>
-            <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
+            <h2 class="text-3xl font-bold text-primary">Pilih Tema Undangan</h2>
+            <p class="text-base-content/80">Berbagai tema cantik untuk gaya pernikahanmu</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
             @foreach ($themes as $theme)
                 <div class="card bg-base-100 shadow-md">
-                    <figure> <img src="{{ asset('storage/' . $theme->thumbnail) }}" alt="{{ $theme->name }}" />
+                    <figure>
+                        <img src="{{ asset('storage/' . $theme->thumbnail) }}" alt="Thumbnail {{ $theme->name }}" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title">{{ $theme->name }}</h2>
-                        <p>{{ $theme->description }}</p>
+                        <h2 class="card-title text-base-content">{{ $theme->name }}</h2>
+                        <p class="text-base-content/90">{{ $theme->description }}</p>
                         <div class="card-actions">
                             @if (!empty($theme->preview_url))
-                                <a href="{{ $theme->preview_url }}" target="_blank"
-                                    class="btn btn-sm bg-purple-600 normal-case text-white hover:bg-purple-700 border-none">
+                                <a href="{{ $theme->preview_url }}" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-sm btn-primary normal-case">
                                     <i class="fa-solid fa-eye"></i> Preview
                                 </a>
                             @else
-                                <span class="text-xs text-gray-400 italic">Preview belum tersedia</span>
+                                <span class="text-xs text-base-content/60 italic">Preview belum tersedia</span>
                             @endif
                         </div>
                     </div>
@@ -99,33 +101,34 @@
         </div>
     </section>
 
-    <!-- Harga Paket -->
-    <section id="harga" class="py-16 bg-base-200">
+    <section id="harga" class="py-16 bg-white"> {{-- Light mode: bg-white, Dark mode: custom CSS --}}
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-purple-600">Paket Harga</h2>
-            <p class="text-gray-500">Sesuaikan dengan kebutuhan dan budgetmu</p>
+            <h2 class="text-3xl font-bold text-primary">Paket Harga</h2>
+            <p class="text-base-content/80">Sesuaikan dengan kebutuhan dan budgetmu</p>
         </div>
         <div class="flex flex-col md:flex-row justify-center gap-6 max-w-5xl mx-auto px-4">
-            <!-- Paket -->
             @foreach ($packages as $package)
-                <div class="card bg-white shadow-md w-full md:w-1/2">
+                <div class="card bg-base-100 shadow-md w-full md:w-1/2">
                     <div class="card-body">
-                        <h2 class="card-title text-xl">Paket {{ $package->name }}</h2>
-                        <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                        <h2 class="card-title text-xl text-base-content">Paket {{ $package->name }}</h2>
+                        <ul class="list-disc list-inside text-sm text-base-content/90 mt-2 space-y-1">
                             @foreach ($package->features ?? [] as $feature)
                                 <li>{{ $feature }}</li>
                             @endforeach
                         </ul>
-                        <p class="text-2xl font-bold mt-4 text-purple-600">Rp
+                        <p class="text-2xl font-bold mt-4 text-primary">Rp
                             {{ number_format($package->price, 0, ',', '.') }}</p>
                         <div class="card-actions justify-end">
                             @auth
-                                <a href="{{ route('order.create', $package) }}"
-                                    class="btn bg-purple-600 text-white normal-case">
+                                <button type="button" class="btn btn-primary normal-case btn-pesan"
+                                    data-name="{{ $package->name }}"
+                                    data-price="{{ number_format($package->price, 0, ',', '.') }}"
+                                    data-features='@json($package->features)'
+                                    data-action="{{ route('order.store', $package) }}">
                                     <i class="fa-solid fa-cart-shopping"></i> Pesan
-                                </a>
+                                </button>
                             @else
-                                <a href="{{ route('login') }}" class="btn bg-gray-400 text-white normal-case">
+                                <a href="{{ route('login') }}" class="btn btn-neutral normal-case">
                                     <i class="fa-solid fa-lock"></i> Login untuk Pesan
                                 </a>
                             @endauth
@@ -136,94 +139,92 @@
         </div>
     </section>
 
-    {{-- testimoni --}}
-    <section id="testimoni" class="py-16">
+    {{-- Testimoni --}}
+    <section id="testimoni" class="py-16 bg-base-200"> {{-- Light mode: bg-base-200, Dark mode: custom CSS --}}
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-purple-600">Apa Kata Mereka?</h2>
-            <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
+            <h2 class="text-3xl font-bold text-primary">Apa Kata Mereka?</h2>
+            <p class="text-base-content/80">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>
         </div>
 
-        <!-- Carousel Container -->
-        <div id="carousel" class="max-w-5xl mx-auto overflow-hidden">
-            <div class="flex w-max">
-                <!-- Item 1 -->
+        <div class="max-w-5xl mx-auto overflow-hidden">
+            <div id="testimoni-carousel-track" class="flex w-max">
                 <div class="w-80 shrink-0 p-4">
                     <div
                         class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
-                        <img src="https://i.pravatar.cc/100?img=32" class="w-16 h-16 rounded-full mb-4" />
-                        <p class="italic">“Undangannya cantik dan mudah dikirim ke semua tamu. Sangat puas!”</p>
-                        <p class="font-bold mt-2">– Rina & Dimas</p>
+                        <img src="https://i.pravatar.cc/100?img=32" class="w-16 h-16 rounded-full mb-4"
+                            alt="Foto Rina & Dimas" />
+                        <p class="italic text-base-content/90">“Undangannya cantik dan mudah dikirim ke semua tamu.
+                            Sangat puas!”</p>
+                        <p class="font-bold mt-2 text-base-content">– Rina & Dimas</p>
                     </div>
                 </div>
-                <!-- Item 2 -->
                 <div class="w-80 shrink-0 p-4">
                     <div
                         class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
-                        <img src="https://i.pravatar.cc/100?img=33" class="w-16 h-16 rounded-full mb-4" />
-                        <p class="italic">“Simple, elegan, dan banyak pilihan tema. Recommended!”</p>
-                        <p class="font-bold mt-2">– Andi & Sari</p>
+                        <img src="https://i.pravatar.cc/100?img=33" class="w-16 h-16 rounded-full mb-4"
+                            alt="Foto Andi & Sari" />
+                        <p class="italic text-base-content/90">“Simple, elegan, dan banyak pilihan tema. Recommended!”
+                        </p>
+                        <p class="font-bold mt-2 text-base-content">– Andi & Sari</p>
                     </div>
                 </div>
-                <!-- Item 3 -->
                 <div class="w-80 shrink-0 p-4">
                     <div
                         class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
-                        <img src="https://i.pravatar.cc/100?img=34" class="w-16 h-16 rounded-full mb-4" />
-                        <p class="italic">“Bikin undangan digital gak ribet, tinggal kirim link aja.”</p>
-                        <p class="font-bold mt-2">– Fajar & Indah</p>
+                        <img src="https://i.pravatar.cc/100?img=34" class="w-16 h-16 rounded-full mb-4"
+                            alt="Foto Fajar & Indah" />
+                        <p class="italic text-base-content/90">“Bikin undangan digital gak ribet, tinggal kirim link
+                            aja.”</p>
+                        <p class="font-bold mt-2 text-base-content">– Fajar & Indah</p>
                     </div>
                 </div>
-                <!-- Item 4 -->
                 <div class="w-80 shrink-0 p-4">
                     <div
                         class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
-                        <img src="https://i.pravatar.cc/100?img=35" class="w-16 h-16 rounded-full mb-4" />
-                        <p class="italic">“Pelayanan cepat dan responsif. Saya puas sekali!”</p>
-                        <p class="font-bold mt-2">– Lia & Budi</p>
+                        <img src="https://i.pravatar.cc/100?img=35" class="w-16 h-16 rounded-full mb-4"
+                            alt="Foto Lia & Budi" />
+                        <p class="italic text-base-content/90">“Pelayanan cepat dan responsif. Saya puas sekali!”</p>
+                        <p class="font-bold mt-2 text-base-content">– Lia & Budi</p>
                     </div>
                 </div>
-                <!-- Item 5 -->
                 <div class="w-80 shrink-0 p-4">
                     <div
                         class="card bg-base-100 shadow-md text-center p-6 rounded-xl flex flex-col items-center h-full">
-                        <img src="https://i.pravatar.cc/100?img=36" class="w-16 h-16 rounded-full mb-4" />
-                        <p class="italic">“Tema-tema undangan sangat variatif dan menarik!”</p>
-                        <p class="font-bold mt-2">– Riko & Maya</p>
+                        <img src="https://i.pravatar.cc/100?img=36" class="w-16 h-16 rounded-full mb-4"
+                            alt="Foto Riko & Maya" />
+                        <p class="italic text-base-content/90">“Tema-tema undangan sangat variatif dan menarik!”</p>
+                        <p class="font-bold mt-2 text-base-content">– Riko & Maya</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Kontak -->
     <section id="kontak" class="bg-gradient-to-r from-pink-100 to-purple-200 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <!-- Form Kontak -->
                 <div>
-                    <h2 class="text-3xl font-bold text-purple-600 mb-6 text-center">Hubungi Kami</h2>
-                    <p class="text-gray-700 mb-8 text-sm md:text-base leading-relaxed">
+                    <h2 class="text-3xl font-bold text-primary mb-6 text-center">Hubungi Kami</h2>
+                    <p class="text-base-content/90 mb-8 text-sm md:text-base leading-relaxed">
                         Punya pertanyaan atau mau konsultasi undangan digital?
                         Kirimkan pesanmu lewat form berikut ini.
                     </p>
-                    <form class="space-y-5 shadow-lg p-6 rounded-lg">
+                    <form class="space-y-5 shadow-lg p-6 rounded-lg bg-base-100">
                         <div>
-                            <label class="block mb-2 text-sm font-semibold text-gray-700">Nama Lengkap</label>
+                            <label class="block mb-2 text-sm font-semibold text-base-content">Nama Lengkap</label>
                             <input type="text" placeholder="Nama Kamu"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
+                                class="input input-bordered w-full text-sm" />
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-semibold text-gray-700">Email</label>
+                            <label class="block mb-2 text-sm font-semibold text-base-content">Email</label>
                             <input type="email" placeholder="email@example.com"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
+                                class="input input-bordered w-full text-sm" />
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-semibold text-gray-700">Pesan</label>
-                            <textarea rows="4" placeholder="Tulis pesan kamu di sini..."
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"></textarea>
+                            <label class="block mb-2 text-sm font-semibold text-base-content">Pesan</label>
+                            <textarea rows="4" placeholder="Tulis pesan kamu di sini..." class="textarea textarea-bordered w-full text-sm"></textarea>
                         </div>
-                        <button
-                            class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-semibold w-full">
+                        <button class="btn btn-primary w-full">
                             Kirim Pesan
                         </button>
                     </form>
@@ -235,7 +236,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="footer" class="footer p-10 bg-base-200 text-base-content">
         <aside>
             <h3 class="font-bold text-xl">NikahKuy</h3>
@@ -257,9 +257,12 @@
     </footer>
 
     <button id="darkToggle"
-        class="fixed bottom-6 right-6 bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-purple-700 transition z-50">
-        <i id="darkIcon" class="fa-solid fa-moon text-xl"></i>
+        class="fixed bottom-6 right-6 btn btn-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50">
+        <i id="darkIcon" class="fa-solid text-xl"></i>
     </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Jika Anda memiliki JS kustom, pastikan ini tidak dikomentari --}}
     <script src="{{ asset('assets/js/myjs.js') }}"></script>
 </body>
 

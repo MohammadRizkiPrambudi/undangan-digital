@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -14,19 +13,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->orders()->with(['package', 'theme'])->get();
-        return view('orders.index', compact('orders'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Package $package)
+    public function create()
     {
-        // $packages = Package::all();
-        // $themes   = Theme::all();
-        // return view('orders.create', compact('packages', 'themes'));
-        return view('frontend.order.create', compact('package'));
+
     }
 
     /**

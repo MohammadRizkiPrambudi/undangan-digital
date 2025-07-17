@@ -8,9 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,11 +32,6 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // web.php
 Route::middleware(['auth'])->group(function () {
-    Route::get('/order/{package}', [OrderController::class, 'create'])->name('order.create');
-    Route::resource('packages', PackageController::class);
-    Route::get('orders/{order}/payment', [PaymentController::class, 'create'])->name('payments.create');
-    Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('payments.store');
-
     Route::prefix('admin')->group(function () {
         Route::resource('packages', PackageController::class);
         Route::resource('users', UserController::class);
@@ -50,8 +43,15 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     });
 
-    Route::get('invitations/{order}/edit', [InvitationController::class, 'edit'])->name('invitations.edit');
-    Route::post('invitations/{order}/update', [InvitationController::class, 'update'])->name('invitations.update');
+    Route::prefix('pembeli')->group(function () {
+        Route::get('/order/{package}', [OrderController::class, 'create'])->name('order.create');
+        Route::post('/order/{package}', [OrderController::class, 'store'])->name('order.store');
+    });
+
+    // Route::get('invitations/{order}/edit', [InvitationController::class, 'edit'])->name('invitations.edit');
+    // Route::post('invitations/{order}/update', [InvitationController::class, 'update'])->name('invitations.update');
+    // Route::get('orders/{order}/payment', [PaymentController::class, 'create'])->name('payments.create');
+    // Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('payments.store');
 });
 
 Route::get('/dashboard/index', function () {

@@ -1,82 +1,16 @@
-@keyframes slide {
-    0%,
-    30% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    33.33%,
-    100% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
-
-.carousel-item {
-    opacity: 0;
-    width: 100%;
-    animation: slide 15s infinite;
-}
-
-.carousel-item:nth-child(2) {
-    animation-delay: 5s;
-}
-
-.carousel-item:nth-child(3) {
-    animation-delay: 10s;
-}
-
-.carousel-container {
-    position: relative;
-    height: 320px;
-    /* Tinggi tetap agar semua kartu sejajar */
-}
-
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
+/* Transisi halus untuk perubahan tema */
 html {
+    scroll-behavior: smooth;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-#carousel .flex {
-    transition: transform 0.8s ease-in-out;
-    will-change: transform;
-}
-
-.nav-link {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.scrolled .nav-link {
-    color: #1f2937;
-    /* text-base-content (tw gray-800) */
-}
-
-html[data-theme="dark"] #navbar.scrolled .nav-link,
-html[data-theme="dark"] #navbar.scrolled .logo-text span:first-child {
-    color: white !important;
-}
-
+/* Latar belakang gelap untuk Hero Section agar teks tetap terbaca */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    /* Atur gelap-terang di sini */
+    /* Overlay hitam transparan */
     z-index: 1;
 }
 
@@ -85,27 +19,160 @@ html[data-theme="dark"] #navbar.scrolled .logo-text span:first-child {
     z-index: 2;
 }
 
-html {
-    scroll-behavior: smooth;
+/* Gaya Navbar saat belum discroll (di atas Hero) */
+#navbar:not(.scrolled) .nav-link {
+    color: white !important;
+    /* Teks putih agar kontras dengan hero image */
+    transition: color 0.3s ease;
 }
 
-.nav-link {
-    position: relative;
-    padding-bottom: 4px;
+#navbar:not(.scrolled) .nav-link:hover {
+    /* Menggunakan warna primary default dari DaisyUI CDN */
+    color: hsl(var(--p)) !important;
 }
 
-.nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 2px;
-    background-color: #9333ea;
-    /* Warna ungu Tailwind: purple-600 */
-    transition: width 0.3s ease-in-out;
+/* Gaya Navbar saat sudah discroll (mengikuti tema DaisyUI) */
+#navbar.scrolled {
+    background-color: hsl(var(--b1)) !important;
+    /* Warna base-100 dari tema aktif */
+    color: hsl(var(--bc)) !important;
+    /* Warna base-content dari tema aktif */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    /* shadow-md */
 }
 
-.nav-link:hover::after {
+#navbar.scrolled .nav-link {
+    color: hsl(var(--bc)) !important;
+    /* Warna teks utama dari tema aktif */
+    transition: color 0.3s ease;
+}
+
+#navbar.scrolled .nav-link:hover {
+    /* Menggunakan warna primary default dari DaisyUI CDN */
+    color: hsl(var(--p)) !important;
+}
+
+/* Dropdown styling (mengikuti tema DaisyUI secara otomatis) */
+.dropdown-content {
+    background-color: hsl(var(--b1));
+    /* bg-base-100 */
+    color: hsl(var(--bc));
+    /* text-base-content */
+}
+
+.dropdown-content li a:hover {
+    background-color: hsl(var(--b2));
+    /* bg-base-200 */
+    color: hsl(var(--bc));
+    /* text-base-content */
+}
+
+/* Gaya khusus untuk memastikan teks dan thumbnail di kartu tema terlihat */
+/* Pastikan teks menggunakan warna yang kontras */
+.card .card-title,
+.card p {
+    /* Ini akan menggunakan warna teks yang diatur oleh DaisyUI untuk tema aktif */
+    color: hsl(var(--bc));
+}
+
+/* Penting: Untuk thumbnail di mode gelap, tambahkan border agar terlihat */
+.card figure img {
+    border: 1px solid hsl(var(--b2));
+    /* Border tipis agar thumbnail terpisah */
     width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Memastikan gambar tidak terdistorsi dan mengisi area */
+}
+
+/* ****************************************************** */
+/* Gaya Khusus Section di Dark Mode */
+/* ****************************************************** */
+
+/* Section Katalog Tema */
+#katalog {
+    transition: background-color 0.4s ease;
+    /* Transisi untuk latar belakang */
+}
+
+/* Di dark mode, gunakan bg-base-200 */
+html[data-theme="dark"] #katalog {
+    background-color: hsl(var(--b2));
+}
+
+/* Section Harga Paket */
+#harga {
+    transition: background-color 0.4s ease;
+    /* Transisi untuk latar belakang */
+}
+
+/* Di dark mode, gunakan bg-base-200 untuk section ini */
+html[data-theme="dark"] #harga {
+    background-color: hsl(var(--b2));
+}
+
+/* Penting: Kontras untuk card di dalam section harga di dark mode */
+html[data-theme="dark"] #harga .card {
+    background-color: hsl(var(--b1)) !important;
+    /* Gunakan base-100 untuk card */
+    color: hsl(var(--bc)) !important;
+    /* Pastikan teks card kontras */
+}
+
+/* Section Testimoni */
+#testimoni {
+    transition: background-color 0.4s ease;
+    /* Transisi untuk latar belakang */
+}
+
+/* Di dark mode, gunakan bg-base-200 */
+html[data-theme="dark"] #testimoni {
+    background-color: hsl(var(--b2));
+}
+
+/* Section Kontak */
+#kontak {
+    transition: background 0.4s ease, color 0.4s ease;
+    /* Transisi untuk latar belakang dan teks */
+}
+
+/* Latar belakang kustom untuk section kontak di dark mode */
+html[data-theme="dark"] #kontak {
+    /* Menggunakan kombinasi warna bawaan DaisyUI yang cenderung gelap */
+    background: linear-gradient(
+        to right,
+        hsl(var(--nf)) 0%,
+        hsl(var(--sf)) 100%
+    );
+    /* Warna neutral focus dan secondary focus */
+    color: hsl(var(--nc));
+    /* Neutral-content untuk teks utama */
+}
+
+html[data-theme="dark"] #kontak .text-primary {
+    color: hsl(var(--p)) !important;
+    /* Pastikan primary tetap primary */
+}
+
+html[data-theme="dark"] #kontak .text-base-content,
+html[data-theme="dark"] #kontak .text-base-content\/90 {
+    color: hsl(var(--nc)) !important;
+    /* Warna teks di dalam section kontak agar kontras */
+}
+
+html[data-theme="dark"] #kontak .shadow-lg.p-6.rounded-lg.bg-base-100 {
+    background-color: hsl(var(--b1)) !important;
+    /* Form di dalam kontak juga ikut dark mode */
+    color: hsl(var(--bc)) !important;
+}
+
+/* Pastikan judul di semua section tetap menggunakan warna primary dari tema aktif */
+html[data-theme="dark"] h2.text-primary {
+    color: hsl(var(--p)) !important;
+    /* Primary color di dark mode */
+}
+
+/* Override warna link di footer agar tetap terbaca di dark mode */
+html[data-theme="dark"] footer a.link:hover {
+    color: hsl(var(--p));
 }
