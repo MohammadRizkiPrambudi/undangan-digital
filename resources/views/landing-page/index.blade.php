@@ -10,32 +10,6 @@
     <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mycss.css') }}">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .nav-link {
-            position: relative;
-            padding-bottom: 4px;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0%;
-            height: 2px;
-            background-color: #9333ea;
-            /* Warna ungu Tailwind: purple-600 */
-            transition: width 0.3s ease-in-out;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body class="bg-base-100 text-base-content">
@@ -55,18 +29,28 @@
                 <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
                 <li><a href="#footer" class="nav-link">Kontak</a></li>
             </ul>
+            @auth
+                <div class="dropdown dropdown-end">
+                    <button class="btn btn-xs bg-purple-600 text-white dropdown-toggle" type="button">
+                        <i class="fa-solid fa-user mr-1"></i> {{ Auth::user()->name }}
+                    </button>
+                    <ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
+                        <li><a href="{{ route('pembeli.dashboard') }}">Dashboard</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="text-left w-full">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <div class="flex gap-2 ml-2">
+                    <a href="{{ route('login') }}" class="btn btn-xs bg-purple-600 text-white border-none">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-xs bg-purple-600 text-white border-none">Register</a>
+                </div>
+            @endauth
 
-            <div class="flex gap-2 ml-2">
-                <a href="{{ route('login') }}"
-                    class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700 border-none">
-                    <i class="fa-solid fa-right-to-bracket mr-1 text-sm"></i> Login
-                </a>
-                <a href="{{ route('register') }}"
-                    class="btn btn-xs bg-purple-600 text-white hover:bg-purple-700 border-none">
-                    <i class="fa-solid fa-user-plus mr-1 text-sm"></i> Register
-                </a>
-
-            </div>
         </div>
     </div>
 
@@ -86,7 +70,7 @@
     </section>
 
     <!-- Katalog Tema -->
-    <section id="katalog" class="py-16 bg-amber-50">
+    <section id="katalog" class="py-16">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-purple-600">Pilih Tema Undangan</h2>
             <p class="text-gray-500">Berbagai tema cantik untuk gaya pernikahanmu</p>
@@ -153,7 +137,7 @@
     </section>
 
     {{-- testimoni --}}
-    <section id="testimoni" class="py-16 bg-blue-50">
+    <section id="testimoni" class="py-16">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-purple-600">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita bahagia dari mereka yang sudah pakai NikahKuy</p>

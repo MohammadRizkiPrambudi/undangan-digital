@@ -84,3 +84,28 @@ html[data-theme="dark"] #navbar.scrolled .logo-text span:first-child {
     position: relative;
     z-index: 2;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #9333ea;
+    /* Warna ungu Tailwind: purple-600 */
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
